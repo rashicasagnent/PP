@@ -1,0 +1,1549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PamPowers - Romantic Connections & Shop</title>
+    <meta name="description" content="Find your perfect romantic match with PamPowers. Discover love, romance, and meaningful connections, then shop curated romantic products.">
+    <meta name="keywords" content="romance, dating, love, relationships, PamPowers, shop, romantic products">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://pampowers.com/Combined.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="PamPowers - Romantic Connections & Shop">
+    <meta property="og:description" content="Find your perfect romantic match with PamPowers and explore curated romantic products.">
+    <meta property="og:image" content="https://pampowers.com/picos/2.webp">
+    <meta property="og:url" content="https://pampowers.com/Combined.html">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <!-- Use Tailwind CSS for a cleaner, modern look -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,700;0,800;0,900;1,700;1,800;1,900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            padding: 0;
+            margin: 0;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        body.open {
+            overflow-y: hidden;
+        }
+
+        /* Tab Navigation */
+        .tab-navigation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 1rem 2rem;
+        }
+
+        .tab-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .tab-button {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .tab-button.active {
+            background: linear-gradient(45deg, #ff9a9e, #fecfef);
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255, 154, 158, 0.4);
+        }
+
+        .tab-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .tab-content {
+            display: none;
+            margin-top: 80px;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Dating App Styles */
+        .container {
+            display: flex;
+            height: calc(100vh - 80px);
+            width: 100vw;
+            transition: filter 0.3s ease;
+        }
+
+        .container.blur {
+            filter: blur(8px);
+            pointer-events: none;
+        }
+
+        .navbar {
+            width: 15%;
+            min-width: 200px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background: rgba(18, 18, 28, 0.92);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            padding: 28px 0;
+            border-right: 1px solid rgba(255, 255, 255, 0.06);
+            box-shadow: 4px 0 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', 'DM Sans', serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+            padding: 0 20px 32px;
+            margin-bottom: 0;
+            letter-spacing: 0.02em;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            transition: color 0.2s ease;
+        }
+        .logo:hover {
+            color: #fecfef;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            padding: 12px 12px 0;
+            margin: 0;
+            width: 100%;
+            gap: 0;
+        }
+
+        .nav-buttons {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+
+        .nav-buttons a {
+            color: rgba(255, 255, 255, 0.75);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            line-height: 1.2;
+            display: flex;
+            align-items: center;
+            min-height: 32px;
+            min-width: 44px;
+            padding: 4px 14px;
+            border-radius: 8px;
+            transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+            position: relative;
+            border-left: 3px solid transparent;
+        }
+
+        .nav-buttons a:hover {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.06);
+            border-left-color: #fecfef;
+        }
+
+        #A1 a {
+            color: #fecfef;
+            border-left-color: #ff6b6b;
+        }
+        #A1 a:hover {
+            color: #fff;
+            background: rgba(254, 207, 239, 0.12);
+            border-left-color: #ff6b6b;
+        }
+
+        .nav-footer {
+            margin-top: auto;
+            width: 100%;
+            padding: 16px 20px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            position: sticky;
+            bottom: 0;
+            background: transparent;
+        }
+
+        .nav-click {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .nav-button a {
+            color: rgba(255, 255, 255, 0.45);
+            text-decoration: none;
+            font-size: 0.8rem;
+            padding: 6px 0;
+            transition: color 0.2s ease;
+        }
+
+        .nav-button a:hover {
+            color: rgba(255, 255, 255, 0.85);
+        }
+        
+        .white {
+            width: 85%;
+            height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .white::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="hearts" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><text x="10" y="15" text-anchor="middle" font-size="12" fill="rgba(255,255,255,0.1)">♥</text></pattern></defs><rect width="100" height="100" fill="url(%23hearts)"/></svg>');
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        .theflow {
+            text-align: center;
+        }
+
+        .h51{
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            background: linear-gradient(45deg, #ff9a9e, #fecfef, #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .h52{
+            color: rgba(255,255,255,0.9);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 400;
+            text-shadow: 0 1px 5px rgba(0,0,0,0.2);
+        }
+
+        .carousel-container {
+            width: 100%;
+            max-width: 1200px;
+            height: 450px;
+            position: relative;
+            perspective: 1000px;
+            margin-top: 40px;
+        }
+
+        .carousel-track {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .card {
+            position: absolute;
+            width: 280px;
+            height: 380px;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .card::after {
+            content: "Double-click to contact";
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .card:hover::after {
+            opacity: 1;
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .card.center {
+            z-index: 10;
+            transform: scale(1.1) translateZ(0);
+        }
+
+        .card.center img {
+            filter: none;
+        }
+
+        .card.left-2, .card.right-2 {
+            z-index: 1;
+            transform: translateX(-400px) scale(0.8) translateZ(-300px);
+            opacity: 0.5;
+        }
+
+        .card.right-2 {
+            transform: translateX(400px) scale(0.8) translateZ(-300px);
+        }
+
+        .card.left-1, .card.right-1 {
+            z-index: 5;
+            transform: translateX(-200px) scale(0.9) translateZ(-100px);
+            opacity: 0.8;
+        }
+
+        .card.right-1 {
+            transform: translateX(200px) scale(0.9) translateZ(-100px);
+        }
+
+        .card.left-1 img, .card.left-2 img, .card.right-1 img, .card.right-2 img {
+            filter: grayscale(80%);
+        }
+
+        .card.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .member-info {
+            text-align: center;
+            margin-top: 40px;
+            transition: all 0.5s ease-out;
+        } 
+
+        .member-name {
+            color: #fff;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            position: relative;
+            display: inline-block;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .member-role {
+            color: #ff9a9e;
+            font-size: 1.2rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            text-shadow: 0 1px 5px rgba(0,0,0,0.2);
+        }
+
+        .dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 40px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #bdc3c7;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: #ff6b6b;
+            transform: scale(1.2);
+            box-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
+        }
+
+        .nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(45deg, #ff9a9e, #fecfef);
+            color: #fff;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 20;
+            transition: all 0.3s ease;
+            font-size: 1.8rem;
+            border: none;
+            outline: none;
+            box-shadow: 0 4px 15px rgba(255, 154, 158, 0.4);
+        }
+
+        .nav-arrow:hover {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: #ffffff;
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
+        }
+
+        .nav-arrow.left {
+            left: 20px;
+        }
+
+        .nav-arrow.right {
+            right: 20px;
+        }
+
+        /* Shop Styles */
+        .shop__header {
+            padding: 1rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .shop__title {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24, #ff9ff3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .shop__text a {
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            color: #fff;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-decoration: none;
+            position: relative;
+        }
+
+        .shop__products {
+            padding-top: 5rem;
+        }
+
+        .products {
+            display: grid;
+            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            padding: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            justify-items: center;
+        }
+
+        .products::after {
+            content: "";
+            width: 300px;
+        }
+
+        .product-card {
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            min-height: 350px;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        .product-card:hover {
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            transform: translateY(-5px);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-card h1 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 0.75rem;
+            color: #fff;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+
+        .product-card p {
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .product-price {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #ffced6;
+        }
+
+        .product-button {
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin: 0.25rem;
+        }
+
+        .add-to-cart {
+            background: linear-gradient(45deg, #ff9a9e, #fecfef);
+            color: #fff;
+            border: none;
+        }
+
+        .buy-now {
+            background: rgba(255,255,255,0.15);
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        /* Cart sidebar */
+        .cart {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 400px;
+            max-width: 90%;
+            height: 100%;
+            background: linear-gradient(180deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+            box-shadow: -4px 0 20px rgba(255, 154, 158, 0.3);
+            overflow-y: auto;
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+            z-index: 50;
+            color: #2c3e50;
+            padding: 2rem;
+        }
+
+        .cart-content h3 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(44, 62, 80, 0.1);
+        }
+
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+
+        body.open .cart {
+            transform: translateX(0);
+        }
+
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 40;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+        }
+
+        body.open .lightbox {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Testimonial styles */
+        .testimonial .testimonial-content {
+            padding: 35px 25px 35px 50px;
+            margin-bottom: 35px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            position: relative;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .testimonial .testimonial-content::before {
+            content: "";
+            position: absolute;
+            bottom: -15px;
+            left: 20px;
+            border-top: 15px solid rgba(255, 255, 255, 0.1);
+            border-left: 15px solid transparent;
+            border-bottom: 15px solid transparent;
+        }
+
+        .testimonial .testimonial-content .testimonial-icon {
+            width: 50px;
+            height: 45px;
+            background: linear-gradient(45deg, #ff9a9e, #fecfef);
+            text-align: center;
+            font-size: 22px;
+            color: #fff;
+            line-height: 42px;
+            position: absolute;
+            top: 15px;
+            left: -19px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(255, 154, 158, 0.3);
+        }
+
+        .testimonial .testimonial-content .testimonial-icon::before {
+            content: "";
+            border-bottom: 16px solid rgba(255, 154, 158, 0.8);
+            border-left: 18px solid transparent;
+            position: absolute;
+            top: -16px;
+            left: 1px;
+        }
+
+        .testimonial .description {
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .testimonial .title {
+            display: block;
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: #fff;
+            text-transform: capitalize;
+            letter-spacing: 1px;
+            margin: 0 0 5px 0;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+
+        .testimonial .post {
+            display: block;
+            font-size: 0.875rem;
+            color: #ff9a9e;
+            font-weight: 500;
+        }
+
+        .owl-theme .owl-controls {
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .owl-theme .owl-controls .owl-page span {
+            background: rgba(255, 255, 255, 0.3);
+            opacity: 1;
+            transition: all 0.4s ease 0s;
+            border-radius: 50%;
+        }
+
+        .owl-theme .owl-controls .owl-page.active span,
+        .owl-theme .owl-controls.clickable .owl-page:hover span {
+            background: linear-gradient(45deg, #ff9a9e, #fecfef);
+            transform: scale(1.2);
+        }
+
+        .testimonial {
+            margin: 0 15px;
+        }
+
+        .testimonial .p-4 {
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .testimonial .p-4 .title {
+            margin-bottom: 0.5rem;
+        }
+
+        .testimonial .p-4 .post {
+            font-size: 0.875rem;
+            opacity: 0.8;
+        }
+
+        /* Review section styles */
+        .review-input {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            max-width: 900px;
+            margin: 2rem auto;
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .review-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        #textarea {
+            width: 100%;
+            height: 150px;
+            padding: 1rem;
+            border-radius: 15px;
+            font-size: 1rem;
+            border: 2px solid #ff9a9e;
+            resize: none;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            backdrop-filter: blur(10px);
+        }
+
+        #submit-review {
+            background: linear-gradient(45deg, #ff9a9e, #fecfef);
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 15px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: none;
+        }
+        
+        #submit-review:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 154, 158, 0.4);
+        }
+
+        /* Age Gate Styles */
+        .age-gate-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .age-gate-modal {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .age-gate-modal h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .age-gate-modal p {
+            font-size: 1rem;
+            color: #34495e;
+            margin-bottom: 20px;
+        }
+        
+        .tos-container {
+            height: 150px;
+            overflow-y: scroll;
+            border: 1px solid #dfe6e9;
+            padding: 10px;
+            margin-bottom: 20px;
+            text-align: left;
+            font-size: 0.8rem;
+            color: #7f8c8d;
+            background-color: #fafafa;
+            border-radius: 5px;
+        }
+
+        .age-gate-form {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .age-gate-form input[type="checkbox"] {
+            margin-right: 10px;
+            width: 18px;
+            height: 18px;
+        }
+
+        .age-gate-buttons button {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        #enter-button {
+            background-color: #27ae60;
+            color: white;
+        }
+
+        #enter-button:disabled {
+            background-color: #bdc3c7;
+            cursor: not-allowed;
+        }
+
+        #exit-button {
+            background-color: #c0392b;
+            color: white;
+            margin-left: 10px;
+        }
+
+        #exit-button:hover {
+            background-color: #e74c3c;
+        }
+
+        .age-gate-overlay.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .tab-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .navbar {
+                width: 100%;
+                min-width: unset;
+                height: auto;
+                flex-direction: row;
+                flex-wrap: wrap;
+                padding: 12px 16px;
+                border-right: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+                justify-content: center;
+                align-items: center;
+                gap: 8px;
+            }
+
+            .logo {
+                padding: 0 0 10px;
+                border-bottom: none;
+            }
+
+            .nav-links {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 6px;
+                padding: 0;
+            }
+
+            .nav-buttons a {
+                border-left: none;
+                border-radius: 20px;
+            }
+            .nav-buttons a:hover {
+                border-left: none;
+                background: rgba(255, 255, 255, 0.1);
+            }
+            #A1 a {
+                border-left: none;
+            }
+
+            .white {
+                width: 100%;
+                height: auto;
+                padding: 2rem 1rem;
+            }
+
+            .card {
+                width: 200px;
+                height: 280px;
+            }
+
+            .card.left-2 {
+                transform: translateX(-250px) scale(0.8) translateZ(-300px);
+            }
+
+            .card.left-1 {
+                transform: translateX(-120px) scale(0.9) translateZ(-100px);
+            }
+
+            .card.right-1 {
+                transform: translateX(120px) scale(0.9) translateZ(-100px);
+            }
+
+            .card.right-2 {
+                transform: translateX(250px) scale(0.8) translateZ(-300px);
+            }
+
+            .member-name {
+                font-size: 2rem;
+            }
+
+            .member-role {
+                font-size: 1rem;
+            }
+
+            .products {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+            }
+
+            .cart {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Age Gate Modal -->
+    <div id="age-gate-overlay" class="age-gate-overlay">
+        <div id="age-gate-modal" class="age-gate-modal">
+            <div class="mx-4 w-full max-w-2xl rounded-xl bg-gray-900 p-12 text-white shadow-2xl">
+                <div class="mb-8 space-y-3 text-center">
+                    <h2 class="text-4xl font-semibold text-white">Age Verification & Terms of Service</h2>
+                    <p class="text-xl text-gray-400">You must be 18 years or older to enter. Please read and accept our Terms of Service.</p>
+                </div>
+                
+                <div class="mb-8 space-y-6">
+                    <div class="rounded-lg p-6 bg-gray-800">
+                        <div class="space-y-4 text-gray-300">
+                            <h3 class="text-2xl font-semibold text-white mb-4">Terms of Service</h3>
+                            <p class="leading-relaxed">Please read these terms and conditions carefully before using Our Service.</p>
+                            
+                            <div class="space-y-3">
+                                <div class="flex items-start gap-2">
+                                    <span class="font-bold text-pink-400">•</span>
+                                    <div>
+                                        <span class="font-bold">These are the Terms and Conditions governing the use of this Service</span> and the agreement that operates between You and the Company. These Terms and Conditions set out the rights and obligations of all users regarding the use of the Service.
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-2">
+                                    <span class="font-bold text-pink-400">•</span>
+                                    <div>
+                                        <span class="font-bold">Your access to and use of the Service is conditioned on Your acceptance</span> of and compliance with these Terms and Conditions. These Terms and Conditions apply to all visitors, users and others who access or use the Service.
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-2">
+                                    <span class="font-bold text-pink-400">•</span>
+                                    <div>
+                                        <span class="font-bold">By accessing or using the Service You agree to be bound by these Terms and Conditions.</span> If You disagree with any part of these Terms and Conditions then You may not access the Service.
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-2">
+                                    <span class="font-bold text-pink-400">•</span>
+                                    <div>
+                                        <span class="font-bold">All members represented are adults over the age of 18.</span> You represent that you are over the age of 18. The Company does not permit those under 18 to use the Service.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mb-8">
+                    <label class="flex cursor-pointer items-start gap-3">
+                        <input id="terms-checkbox" class="mt-1 h-4 w-4 rounded border-gray-400 bg-transparent text-pink-400 focus:ring-2 focus:ring-pink-400" type="checkbox" disabled>
+                        <p class="text-base text-gray-300">I have read, understood, and agree to the Terms of Service, and I confirm I am 18 or older.</p>
+                    </label>
+                </div>
+                
+                <div class="flex gap-4 mb-6">
+                    <button id="enter-button" disabled class="flex-1 rounded-lg bg-pink-500 px-6 py-3 text-lg font-medium text-white transition-colors duration-200 hover:bg-pink-400 disabled:cursor-not-allowed disabled:bg-gray-700 disabled:text-gray-400">
+                        Enter
+                    </button>
+                    <button id="exit-button" class="flex-1 rounded-lg bg-gray-600 px-6 py-3 text-lg font-medium text-white transition-colors duration-200 hover:bg-gray-500">
+                        Exit
+                    </button>
+                </div>
+                
+                <div class="mb-4 flex gap-4 justify-center">
+                    <a href="Shop.html" class="px-6 py-2 rounded-lg bg-gradient-to-r from-pink-500 to-purple-500 text-white font-semibold transition-all duration-200 hover:scale-105 hover:shadow-lg">
+                        Go to Shop
+                    </a>
+                    <a href="terms.html" class="px-6 py-2 rounded-lg bg-gray-600 text-white font-semibold transition-all duration-200 hover:bg-gray-500 border border-gray-500">
+                        View Full Terms
+                    </a>
+                </div>
+                
+                <div class="text-center text-sm text-gray-400">
+                    <span>ⓘ More on </span>
+                    <a href="terms.html" class="text-pink-400 hover:text-pink-300 hover:underline">Terms of Service</a>
+                    <span> and </span>
+                    <a href="#" class="text-pink-400 hover:text-pink-300 hover:underline">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tab Navigation -->
+    <div class="tab-navigation">
+        <div class="tab-buttons">
+            <button class="tab-button active" data-tab="dating">Find Love</button>
+            <button class="tab-button" data-tab="shop">Shop</button>
+        </div>
+    </div>
+
+    <!-- Dating App Tab -->
+    <div id="dating-tab" class="tab-content active">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">PamPowers</div>
+                <ul class="nav-links">
+                    <li class="nav-buttons" id="A5"><a href="Index.html">Home</a></li>
+                    <li class="nav-buttons" id="A4"><a href="popular.html">Popular</a></li>
+                    <li class="nav-buttons" id="A3"><a href="Shop.html">Shop</a></li>
+                    <li class="nav-buttons" id="A2"><a href="Beta.html">Hot Ones</a></li>
+                    <li class="nav-buttons" id="A1"><a href="#romantic">Romantic</a></li>
+                </ul>
+                <div class="nav-footer">
+                    <ul class="nav-click">
+                        <li class="nav-button"><a href="#">Privacy Policy</a></li>
+                        <li class="nav-button"><a href="terms.html">Terms of Service</a></li>
+                        <li class="nav-button"><a href="#">Help</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="white">
+                <div class="theflow">
+                    <h1 class="h51">Find Your Perfect Match</h1>
+                    <h2 class="h52">Discover Romance with PamPowers</h2>
+                </div>
+                <div class="carousel-container">
+                    <button class="nav-arrow left" type="button" aria-label="Previous profile">‹</button>
+                    <div class="carousel-track">
+                        <div class="card" data-index="0">
+                            <img src="picos/2.webp" srcset="picos/2.webp 280w" sizes="(max-width: 480px) 160px, (max-width: 768px) 200px, 280px" width="280" height="380" alt="Pamela Rose - Romance Specialist" fetchpriority="high">
+                        </div>
+                        <div class="card" data-index="1">
+                            <img src="picos/22.webp" srcset="picos/22.webp 280w" sizes="(max-width: 480px) 160px, (max-width: 768px) 200px, 280px" width="280" height="380" alt="Profile - Romance Specialist" loading="lazy">
+                        </div>
+                        <div class="card" data-index="2">
+                            <img src="picos/23.webp" srcset="picos/23.webp 280w" sizes="(max-width: 480px) 160px, (max-width: 768px) 200px, 280px" width="280" height="380" alt="Profile - Romance Specialist" loading="lazy">
+                        </div>
+                        <div class="card" data-index="3">
+                            <img src="picos/a.jpg" srcset="picos/a.jpg 280w" sizes="(max-width: 480px) 160px, (max-width: 768px) 200px, 280px" width="280" height="380" alt="Profile - Romance Specialist" loading="lazy">
+                        </div>
+                        <div class="card" data-index="4">
+                            <img src="picos/b.jpg" srcset="picos/b.jpg 280w" sizes="(max-width: 480px) 160px, (max-width: 768px) 200px, 280px" width="280" height="380" alt="Profile - Romance Specialist" loading="lazy">
+                        </div>
+                        <div class="card" data-index="5">
+                            <img src="picos/c.jpg" srcset="picos/c.jpg 280w" sizes="(max-width: 480px) 160px, (max-width: 768px) 200px, 280px" width="280" height="380" alt="Profile - Romance Specialist" loading="lazy">
+                        </div>
+                    </div>
+                    <button class="nav-arrow right" type="button" aria-label="Next profile">›</button>
+                </div>
+                <div class="member-info">
+                    <h3 class="member-name">Pamela Rose</h3>
+                    <p class="member-role">Romance Specialist</p>
+                </div>
+                <div class="dots">
+                    <div class="dot active" data-index="0"></div>
+                    <div class="dot" data-index="1"></div>
+                    <div class="dot" data-index="2"></div>
+                    <div class="dot" data-index="3"></div>
+                    <div class="dot" data-index="4"></div>
+                    <div class="dot" data-index="5"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Shop Tab -->
+    <div id="shop-tab" class="tab-content">
+        <section class="shop">
+            <!-- Header -->
+            <div class="shop__header">
+                <h1 class="shop__title">PamPowers Shop</h1>
+                <p class="shop__text">
+                    <a class="js-toggle-cart" href="#" title="View cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span id="cart-count" class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center opacity-0 transition-opacity duration-300">0</span>
+                    </a>
+                </p>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="shop__products">
+                <div class="products">
+                    <!-- Product item 1 -->
+                    <div class="product-card">
+                        <div>
+                            <img src="picos/blac.webp" srcset="picos/blac.webp 300w" sizes="(max-width: 600px) 100vw, 300px" width="300" height="200" alt="Satisfyer Penguin - Premium intimate product" loading="lazy">
+                            <i class="fas fa-heart text-5xl" style="color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,0.3);"></i>
+                        </div>
+                        <h1>Satisfyer Penguin</h1>
+                        <p>Perfect for self satisfaction</p>
+                        <p class="product-price">$39.99</p>
+                        <a class="product-button add-to-cart js-add-product" href="#" title="Add to cart">Add to cart</a>
+                        <a class="product-button buy-now" href="pay.html?product=satisfyer%20penguin&price=39.99" title="Buy now">Buy Now</a>
+                    </div>
+
+                    <!-- Product item 2 -->
+                    <div class="product-card">
+                        <div>
+                            <img src="picos/vubu.avif" srcset="picos/vubu.avif 300w" sizes="(max-width: 600px) 100vw, 300px" width="300" height="200" alt="Mini Massager - Compact intimate device" loading="lazy">
+                            <i class="fas fa-rose text-5xl" style="color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,0.3);"></i>
+                        </div>
+                        <h1>Mini Massager</h1>
+                        <p>Beautiful relaxing Massager</p>
+                        <p class="product-price">$24.99</p>
+                        <a class="product-button add-to-cart js-add-product" href="#" title="Add to cart">Add to cart</a>
+                        <a class="product-button buy-now" href="pay.html?product=Mini%20Massager&price=24.99" title="Buy now">Buy Now</a>
+                    </div>
+
+                    <!-- Product item 3 -->
+                    <div class="product-card">
+                        <div>
+                            <img src="picos/ole.webp" srcset="picos/ole.webp 300w" sizes="(max-width: 600px) 100vw, 300px" width="300" height="200" alt="Romantic Bird - Decorative romantic item" loading="lazy">
+                            <i class="fas fa-gem text-5xl" style="color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,0.3);"></i>
+                        </div>
+                        <h1>Romantic Bird</h1>
+                        <p>Elegant pieces to show yourself love</p>
+                        <p class="product-price">$29.99</p>
+                        <a class="product-button add-to-cart js-add-product" href="#" title="Add to cart">Add to cart</a>
+                        <a class="product-button buy-now" href="pay.html?product=Romantic%20Bird&price=29.99" title="Buy now">Buy Now</a>
+                    </div>
+
+                    <!-- Product item 4 -->
+                    <div class="product-card">
+                        <div class="w-full h-40 rounded-md mb-4 flex items-center justify-center" style="background: linear-gradient(45deg, #ff9a9e, #fecfef); border-radius: 15px;">
+                            <i class="fas fa-champagne-glasses text-5xl" style="color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,0.3);"></i>
+                        </div>
+                        <h1>Romantic Dinner Set</h1>
+                        <p>Perfect for intimate dinners</p>
+                        <p class="product-price">$59.99</p>
+                        <a class="product-button add-to-cart js-add-product" href="#" title="Add to cart">Add to cart</a>
+                        <a class="product-button buy-now" href="pay.html?product=Romantic%20Dinner%20Set&price=59.99" title="Buy now">Buy Now</a>
+                    </div>
+
+                    <!-- Product item 5 -->
+                    <div class="product-card">
+                        <div>
+                            <img src="picos/under.jpeg" srcset="picos/under.jpeg 300w" sizes="(max-width: 600px) 100vw, 300px" width="300" height="200" alt="Romantic Candles - Ambient lighting" loading="lazy">
+                            <i class="fas fa-candle-holder text-5xl" style="color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,0.3);"></i>
+                        </div>
+                        <h1>Romantic Candles</h1>
+                        <p>Create the perfect ambiance</p>
+                        <p class="product-price">$14.99</p>
+                        <a class="product-button add-to-cart js-add-product" href="#" title="Add to cart">Add to cart</a>
+                        <a class="product-button buy-now" href="pay.html?product=Romantic%20Candles&price=14.99" title="Buy now">Buy Now</a>
+                    </div>
+
+                    <!-- Product item 6 -->
+                    <div class="product-card">
+                        <div class="w-full h-40 rounded-md mb-4 flex items-center justify-center" style="background: linear-gradient(45deg, #fecfef, #ff9ff3); border-radius: 15px;">
+                            <i class="fas fa-gift text-5xl" style="color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,0.3);"></i>
+                        </div>
+                        <h1>Surprise Gift Box</h1>
+                        <p>A magical surprise for your loved one</p>
+                        <p class="product-price">$49.99</p>
+                        <a class="product-button add-to-cart js-add-product" href="#" title="Add to cart">Add to cart</a>
+                        <a class="product-button buy-now" href="pay.html?product=Surprise%20Gift%20Box&price=49.99" title="Buy now">Buy Now</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <div class="container mx-auto px-4 mt-8">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold mb-4" style="color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">
+                        <span style="background: linear-gradient(45deg, #ff9a9e, #fecfef); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">L</span>ove Stories
+                    </h2>
+                    <p class="text-lg" style="color: rgba(255,255,255,0.8);">What our customers say about their romantic experiences</p>
+                </div>
+                <div id="testimonial-slider" class="owl-carousel">
+                    <div class="testimonial">
+                        <div class="testimonial-content">
+                            <div class="testimonial-icon">
+                                <i class="fa fa-heart"></i>
+                            </div>
+                            <p class="description">
+                                "This toy is amazing . It extremely soft which make it super realistic. Easy to clean and to play with. I had a lot of fun last night and probably is one of my favorites."
+                            </p>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="title">Michael</h3>
+                        </div>
+                    </div>
+
+                    <div class="testimonial">
+                        <div class="testimonial-content">
+                            <div class="testimonial-icon">
+                                <i class="fa fa-heart"></i>
+                            </div>
+                            <p class="description">
+                                "I bought this for the hubby, no regrets! The quality is top notch, price is great, easy to use."
+                            </p>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="title">Emma & James</h3>
+                        </div>
+                    </div>
+
+                    <div class="testimonial">
+                        <div class="testimonial-content">
+                            <div class="testimonial-icon">
+                                <i class="fa fa-heart"></i>
+                            </div>
+                            <p class="description">
+                                "Well-Made and durable recently purchased this and was impressed with its overall quality. The material feels soft, durable, and realistic, which enhances the user experience. The design is compact I can store and travel it without much trouble"
+                            </p>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="title">Alex</h3>
+                        </div>
+                    </div>
+
+                    <div class="testimonial">
+                        <div class="testimonial-content">
+                            <div class="testimonial-icon">
+                                <i class="fa fa-heart"></i>
+                            </div>
+                            <p class="description">
+                                "At first I had my doubts about whether this was the right product. But now that I have it, I can give assurance that if quality is 100% recommended."
+                            </p>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="title">Isabella</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Review Section -->
+        <section class="review-input container mx-auto p-8 mt-8">
+            <div class="text-center mb-6">
+                <h2 class="text-4xl font-bold mb-2" style="color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">
+                    <span style="background: linear-gradient(45deg, #ff9a9e, #fecfef); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">P</span>amPowers Reviews
+                </h2>
+                <p class="text-lg" style="color: rgba(255,255,255,0.8);">Share your thoughts on our products</p>
+            </div>
+            <div class="review-form">
+                <textarea name="review-textarea" id="textarea" placeholder="Write your review here..." style="color: #fff; border: 2px solid #ff9a9e; background-color: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px);"></textarea>
+                <button type="button" id="submit-review" class="px-6 py-3 rounded-md font-bold transition-colors" style="background: linear-gradient(45deg, #ff9a9e, #fecfef); color: #fff; border: none;">Submit</button>
+            </div>
+        </section>
+    </div>
+
+   <!-- Scripts (updated jQuery for security & compatibility) -->
+   <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
+
+   <script>
+       // Age Gate functionality
+       document.addEventListener('DOMContentLoaded', function() {
+           const tosContainer = document.getElementById('tos-container');
+           const termsCheckbox = document.getElementById('terms-checkbox');
+           const enterButton = document.getElementById('enter-button');
+           const exitButton = document.getElementById('exit-button');
+           const ageGateOverlay = document.getElementById('age-gate-overlay');
+
+           // Enable checkbox after scrolling
+           tosContainer.addEventListener('scroll', function() {
+               if (tosContainer.scrollTop + tosContainer.clientHeight >= tosContainer.scrollHeight - 10) {
+                   termsCheckbox.disabled = false;
+               }
+           });
+
+           // Handle checkbox change
+           termsCheckbox.addEventListener('change', function() {
+               enterButton.disabled = !this.checked;
+           });
+
+           // Handle enter button
+           enterButton.addEventListener('click', function() {
+               if (termsCheckbox.checked) {
+                   ageGateOverlay.classList.add('hidden');
+               }
+           });
+
+           // Handle exit button
+           exitButton.addEventListener('click', function() {
+               window.close();
+           });
+       });
+
+       // Tab switching functionality
+       document.addEventListener('DOMContentLoaded', function() {
+           const tabButtons = document.querySelectorAll('.tab-button');
+           const tabContents = document.querySelectorAll('.tab-content');
+
+           tabButtons.forEach(button => {
+               button.addEventListener('click', function() {
+                   const targetTab = this.getAttribute('data-tab');
+                   
+                   // Remove active class from all buttons and contents
+                   tabButtons.forEach(btn => btn.classList.remove('active'));
+                   tabContents.forEach(content => content.classList.remove('active'));
+                   
+                   // Add active class to clicked button and corresponding content
+                   this.classList.add('active');
+                   document.getElementById(targetTab + '-tab').classList.add('active');
+               });
+           });
+       });
+
+       // Carousel functionality
+       document.addEventListener('DOMContentLoaded', function() {
+           let currentIndex = 0;
+           const cards = document.querySelectorAll('.card');
+           const dots = document.querySelectorAll('.dot');
+           const memberNames = ['Pamela Rose', 'Sarah Johnson', 'Emma Wilson', 'Lisa Chen', 'Maria Garcia', 'Anna Smith'];
+           const memberRoles = ['Romance Specialist', 'Love Expert', 'Relationship Coach', 'Dating Consultant', 'Romance Advisor', 'Love Guide'];
+           const memberNameElement = document.querySelector('.member-name');
+           const memberRoleElement = document.querySelector('.member-role');
+
+           function updateCarousel() {
+               cards.forEach((card, index) => {
+                   card.classList.remove('center', 'left-1', 'left-2', 'right-1', 'right-2', 'hidden');
+                   
+                   const relativeIndex = index - currentIndex;
+                   if (relativeIndex === 0) {
+                       card.classList.add('center');
+                   } else if (relativeIndex === -1) {
+                       card.classList.add('left-1');
+                   } else if (relativeIndex === 1) {
+                       card.classList.add('right-1');
+                   } else if (relativeIndex === -2) {
+                       card.classList.add('left-2');
+                   } else if (relativeIndex === 2) {
+                       card.classList.add('right-2');
+                   } else {
+                       card.classList.add('hidden');
+                   }
+               });
+
+               dots.forEach((dot, index) => {
+                   dot.classList.toggle('active', index === currentIndex);
+               });
+
+               if (memberNameElement && memberRoleElement) {
+                   memberNameElement.textContent = memberNames[currentIndex];
+                   memberRoleElement.textContent = memberRoles[currentIndex];
+               }
+           }
+
+           // Navigation arrows
+           document.querySelector('.nav-arrow.left').addEventListener('click', function() {
+               currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+               updateCarousel();
+           });
+
+           document.querySelector('.nav-arrow.right').addEventListener('click', function() {
+               currentIndex = (currentIndex + 1) % cards.length;
+               updateCarousel();
+           });
+
+           // Dot navigation
+           dots.forEach((dot, index) => {
+               dot.addEventListener('click', function() {
+                   currentIndex = index;
+                   updateCarousel();
+               });
+           });
+
+           // Initialize carousel
+           updateCarousel();
+           
+           // Add double-click functionality to carousel cards
+           cards.forEach((card, i) => {
+               card.addEventListener("dblclick", () => {
+                   const memberName = memberNames[i];
+                   const memberRole = memberRoles[i];
+                   // Redirect to payment page with member info
+                   window.location.href = `pay.html?member=${encodeURIComponent(memberName)}&role=${encodeURIComponent(memberRole)}`;
+               });
+           });
+       });
+
+       // Cart functionality
+       var cartOpen = false;
+       var numberOfProducts = 0;
+       var cart = [];
+
+       $('body').on('click', '.js-toggle-cart', toggleCart);
+       $('body').on('click', '.js-add-product', addProduct);
+
+       function toggleCart(e) {
+         e.preventDefault();
+         if(cartOpen) {
+           closeCart();
+           return;
+         }
+         openCart();
+       }
+
+       function openCart() {
+         cartOpen = true;
+         $('body').addClass('open');
+         updateCartDisplay();
+       }
+
+       function closeCart() {
+         cartOpen = false;
+         $('body').removeClass('open');
+       }
+
+       function addProduct(e) {
+         e.preventDefault();
+         const productCard = $(this).closest('.product-card');
+         const productName = productCard.find('h1').text();
+         const productPrice = productCard.find('.product-price').text();
+         
+         cart.push({
+           name: productName,
+           price: productPrice
+         });
+         
+         numberOfProducts++;
+         updateCartCount();
+         openCart();
+       }
+
+       function updateCartCount() {
+           const cartCountElement = $('#cart-count');
+           cartCountElement.text(numberOfProducts);
+           if (numberOfProducts > 0) {
+               cartCountElement.removeClass('opacity-0').addClass('opacity-100');
+           } else {
+               cartCountElement.removeClass('opacity-100').addClass('opacity-0');
+           }
+       }
+
+       function updateCartDisplay() {
+           const cartContent = $('.cart-content');
+           if (cartContent.length === 0) {
+               $('body').append(`
+                   <div class="cart">
+                       <div class="cart-content">
+                           <h3>Your Cart</h3>
+                           <div class="cart-items"></div>
+                           <div class="cart-total"></div>
+                       </div>
+                   </div>
+                   <div class="lightbox"></div>
+               `);
+           }
+           
+           const cartItems = $('.cart-items');
+           cartItems.empty();
+           
+           if (cart.length === 0) {
+               cartItems.html('<p>Your cart is empty</p>');
+           } else {
+               cart.forEach(item => {
+                   cartItems.append(`<div class="cart-item">
+                       <span>${item.name}</span>
+                       <span>${item.price}</span>
+                   </div>`);
+               });
+           }
+       }
+       
+       $(document).ready(function(){
+           $("#testimonial-slider").owlCarousel({
+               items:3,
+               itemsDesktop:[1000,3],
+               itemsDesktopSmall:[980,2],
+               itemsTablet:[768,2],
+               itemsMobile:[650,1],
+               pagination:true,
+               navigation:false,
+               slideSpeed:1000,
+               autoPlay:true
+           });
+       });
+   </script>
+
+</body>
+</html>

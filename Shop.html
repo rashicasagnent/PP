@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="shop">PamPowers Shop - Romantic Products</title>
+    <meta name="description" content="Browse romantic gifts and intimate products from PamPowers. Thoughtfully curated items to spark connection, relaxation, and romance.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://pampowers.com/Shop.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="PamPowers Shop - Romantic Products">
+    <meta property="og:description" content="Browse romantic gifts and intimate products from PamPowers. Thoughtfully curated items to spark connection, relaxation, and romance.">
+    <meta property="og:image" content="https://pampowers.com/picos/2.webp">
+    <meta property="og:url" content="https://pampowers.com/Shop.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <!-- Use Tailwind CSS for a cleaner, modern look -->
+    <!-- Updated libraries for security -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,700;0,800;0,900;1,700;1,800;1,900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Restored Owl Carousel for compatibility -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.min.css">
+    <link rel="stylesheet" href="Style2.css">
+
+    <style>
+        /* Payment Popup Styles */
+        .payment-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .payment-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .payment-modal {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            border: 3px solid #28a745;
+            position: relative;
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+
+        .payment-overlay.active .payment-modal {
+            transform: scale(1);
+        }
+
+        .payment-modal h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #28a745;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .payment-modal p {
+            font-size: 1.1rem;
+            color: #495057;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .payment-options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .payment-option {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 15px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .payment-option:hover {
+            border-color: #28a745;
+            background: #e8f5e8;
+            transform: translateY(-2px);
+        }
+
+        .payment-option.selected {
+            border-color: #28a745;
+            background: #d4edda;
+        }
+
+        .payment-option h3 {
+            color: #28a745;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .payment-option p {
+            color: #6c757d;
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .payment-address {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: #495057;
+            word-break: break-all;
+            display: none;
+            position: relative;
+        }
+
+        .payment-address.show {
+            display: block;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .copy-btn:hover {
+            background: #218838;
+            transform: scale(1.05);
+        }
+
+        .copy-btn:active {
+            background: #1e7e34;
+            transform: scale(0.95);
+        }
+
+        .copy-success {
+            background: #28a745 !important;
+            animation: copyPulse 0.6s ease;
+        }
+
+        @keyframes copyPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .payment-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 25px;
+        }
+
+        .payment-btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .payment-btn.primary {
+            background: #28a745;
+            color: white;
+        }
+
+        .payment-btn.primary:hover {
+            background: #218838;
+            transform: translateY(-2px);
+        }
+
+        .payment-btn.secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .payment-btn.secondary:hover {
+            background: #5a6268;
+        }
+
+        .close-payment {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #6c757d;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-payment:hover {
+            color: #dc3545;
+        }
+
+        /* Logo link styling */
+        .shop__title {
+            font-family: 'Cormorant Garamond', 'DM Sans', serif;
+            pointer-events: auto !important;
+            user-select: none;
+        }
+
+        .shop__title:hover {
+            opacity: 0.8;
+        }
+
+        /* Base styles for romantic theme */
+        body {
+            font-family: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            padding: 0;
+            margin: 0;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        body.open {
+            overflow-y: hidden;
+        }
+
+        /* Responsive product grid - symmetric layout with romantic scrolling */
+        .products {
+            display: grid;
+            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            padding: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            justify-items: center;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255, 154, 158, 0.6) rgba(255, 255, 255, 0.1);
+        }
+
+        /* Custom scrollbar styling for romantic theme */
+        .products::-webkit-scrollbar {
+            height: 12px;
+        }
+
+        .products::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .products::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, #ff9a9e, #fecfef);
+            border-radius: 10px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 2px 10px rgba(255, 154, 158, 0.3);
+        }
+
+        .products::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.5);
+        }
+
+        /* Romantic floating hearts animation */
+        .products::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 0;
+            right: 0;
+            height: 20px;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><defs><pattern id="hearts-scroll" x="0" y="0" width="50" height="20" patternUnits="userSpaceOnUse"><text x="25" y="15" text-anchor="middle" font-size="12" fill="rgba(255,154,158,0.3)">♥</text></pattern></defs><rect width="100" height="20" fill="url(%23hearts-scroll)"/></svg>');
+            animation: floatHearts 8s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes floatHearts {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* Ensure even number of products for perfect symmetry */
+        .products::after {
+            content: "";
+            width: 300px;
+        }
+
+        /* Romantic glow effect on product cards during scroll */
+        .products .p-6 {
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .products .p-6:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(255, 154, 158, 0.3), 
+                        0 0 30px rgba(255, 154, 158, 0.2);
+        }
+
+        /* Romantic sparkle effect */
+        .products .p-6::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            background: linear-gradient(45deg, transparent, rgba(255, 154, 158, 0.1), transparent);
+            border-radius: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .products .p-6:hover::before {
+            opacity: 1;
+        }
+
+        /* Smooth scroll indicators */
+        .scroll-indicator {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            padding: 10px 20px;
+            color: #fff;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 15px rgba(255, 154, 158, 0.2);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: translateX(-50%) scale(1); }
+            50% { transform: translateX(-50%) scale(1.05); }
+        }
+
+        /* Cart sidebar */
+        .cart {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 400px;
+            max-width: 90%;
+            height: 100%;
+            background: linear-gradient(180deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+            box-shadow: -4px 0 20px rgba(255, 154, 158, 0.3);
+            overflow-y: auto;
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+            z-index: 1000;
+            color: #2c3e50;
+        }
+
+        body.open .cart {
+            transform: translateX(0);
+        }
+
+        .cart__products {
+            position: relative;
+            z-index: 1001;
+        }
+
+        .js-cart-product {
+            position: relative;
+            z-index: 1002;
+        }
+
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 40;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+        }
+
+        body.open .lightbox {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Testimonial styles */
+        .testimonial .testimonial-content {
+            padding: 35px 25px 35px 50px;
+            margin-bottom: 35px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            position: relative;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .testimonial .testimonial-content::before {
+            content: "";
+            position: absolute;
+            bottom: -15px;
+            left: 20px;
+            border-top: 15px solid rgba(255, 255, 255, 0.1);
+            border-left: 15px solid transparent;
+            border-bottom: 15px solid transparent;
+        }
+
+        .testimonial .testimonial-content .testimonial-icon {
+            width: 50px;
+            height: 45px;
+            background: linear-gradient(45deg, #ff9a9e, #fecfef);
+            text-align: center;
+            font-size: 22px;
+            color: #fff;
+            line-height: 42px;
+            position: absolute;
+            top: 15px;
+            left: -19px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(255, 154, 158, 0.3);
+        }
+
+        .testimonial .testimonial-content .testimonial-icon::before {
+            content: "";
+            border-bottom: 16px solid rgba(255, 154, 158, 0.8);
+            border-left: 18px solid transparent;
+            position: absolute;
+            top: -16px;
+            left: 1px;
+        }
+
+        .testimonial .description {
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .testimonial .title {
+            display: block;
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: #fff;
+            text-transform: capitalize;
+            letter-spacing: 1px;
+            margin: 0 0 5px 0;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+
+        .testimonial .post {
+            display: block;
+            font-size: 0.875rem;
+            color: #ff9a9e;
+            font-weight: 500;
+        }
+
+        .owl-theme .owl-controls {
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .owl-theme .owl-controls .owl-page span {
+            background: rgba(255, 255, 255, 0.3);
+            opacity: 1;
+            transition: all 0.4s ease 0s;
+            border-radius: 50%;
+        }
+
+        .owl-theme .owl-controls .owl-page.active span,
+        .owl-theme .owl-controls.clickable .owl-page:hover span {
+            background: linear-gradient(45deg, #ff9a9e, #fecfef);
+            transform: scale(1.2);
+        }
+
+        /* Testimonials section improvements */
+        .testimonial {
+            margin: 0 15px;
+        }
+
+        .testimonial .p-4 {
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .testimonial .p-4 .title {
+            margin-bottom: 0.5rem;
+        }
+
+        .testimonial .p-4 .post {
+            font-size: 0.875rem;
+            opacity: 0.8;
+        }
+
+        /* Responsive testimonials */
+        @media (max-width: 768px) {
+            .testimonial .testimonial-content {
+                padding: 25px 20px 25px 40px;
+            }
+            
+            .testimonial .testimonial-content .testimonial-icon {
+                width: 40px;
+                height: 35px;
+                font-size: 18px;
+                line-height: 32px;
+            }
+            
+            .testimonial .description {
+                font-size: 0.9rem;
+            }
+
+            /* Mobile romantic scrolling improvements */
+            .products {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 1.5rem;
+                padding: 1rem;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+            }
+
+            .products .p-6 {
+                scroll-snap-align: start;
+                min-width: 280px;
+            }
+
+            .scroll-indicator {
+                bottom: 20px;
+                font-size: 0.8rem;
+                padding: 8px 16px;
+            }
+
+            /* Mobile scrollbar */
+            .products::-webkit-scrollbar {
+                height: 8px;
+            }
+        }
+
+        /* Review section styles */
+        .review-input {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            max-width: 900px;
+            margin: 2rem auto;
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .review-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        #textarea {
+            width: 100%;
+            height: 150px;
+            padding: 1rem;
+            border-radius: 15px;
+            font-size: 1rem;
+            border: 2px solid #ff9a9e;
+            resize: none;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            backdrop-filter: blur(10px);
+        }
+
+        #submit-review {
+            background: linear-gradient(45deg, #ff9a9e, #fecfef);
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 15px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: none;
+        }
+        
+        #submit-review:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 154, 158, 0.4);
+        }
+
+        /* Review display styles */
+        .user-review-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+        }
+
+        .user-review-item p {
+            margin: 0 0 12px 0;
+            font-size: 16px;
+            line-height: 1.5;
+            color: #fff;
+        }
+
+        .user-review-item span {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            font-style: italic;
+        }
+
+        #display-reviews {
+            min-height: 50px;
+        }
+        
+        /* Fix for cart footer and checkout button */
+        .cart__footer {
+            position: relative !important;
+            z-index: 1003 !important;
+            pointer-events: auto !important;
+        }
+        
+        .js-checkout-btn {
+            position: relative !important;
+            z-index: 1004 !important;
+            pointer-events: auto !important;
+            cursor: pointer !important;
+            display: inline-block !important;
+            text-decoration: none !important;
+        }
+        
+        .js-checkout-btn:hover {
+            opacity: 0.9 !important;
+            transform: translateY(-2px) !important;
+        }
+        
+        .cart {
+            pointer-events: auto !important;
+        }
+    </style>
+</head>
+<body>
+    <section class="shop">
+      <!-- Header -->
+      <div class="shop__header p-4 shadow-lg flex justify-between items-center fixed top-0 w-full z-30" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255, 255, 255, 0.2);">
+        <a href="Index.html" class="shop__title text-3xl font-bold" style="background: linear-gradient(45deg, #ff6b6b, #ee5a24, #ff9ff3); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-decoration: none; cursor: pointer; transition: all 0.3s ease; color: #ff6b6b; z-index: 900; position: relative;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" aria-label="Return to PamPowers homepage">PamPowers</a>
+        <p class="shop__text">
+          <a class="js-toggle-cart px-4 py-2 rounded-md font-semibold transition-colors relative" href="#" title="View cart" aria-label="Open shopping cart" role="button" tabindex="0" style="color: #fff; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2);">
+            <i class="fas fa-shopping-cart" aria-hidden="true"></i>
+            <span id="cart-count" class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center opacity-0 transition-opacity duration-300" aria-label="Number of items in cart">0</span>
+          </a>
+        </p>
+      </div>
+
+      <!-- Products Grid -->
+      <div class="shop__products pt-20">
+        <div class="products container mx-auto">
+          <!-- Product item 1 -->
+          <div class="p-6 rounded-lg shadow-lg hover:shadow-2xl transition-all duration-300 text-center flex flex-col items-center" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); min-height: 350px; width: 100%; max-width: 300px;">
+            <div class="product-image-container">
+                <img src="picos/blac.webp" srcset="picos/blac.webp 300w" sizes="(max-width: 600px) 100vw, 300px" width="300" height="200" alt="Satisfyer Penguin - Premium intimate product" class="product-image" loading="lazy">
+                <i class="fas fa-heart text-5xl" style="color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,0.3);"></i>
+            </div>
+            <h1 class="text-xl font-bold mb-3" style="color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,0.3);">satisfyer penguin</h1>
+            <p class="text-sm mb-4" style="color: rgba(255,255,255,0.8);">Perfect for self satisfaction</p>
+            <p class="text-lg font-semibold mb-4" style="color:#ffced6;">$39.99</p>
+            <a class="js-add-product px-4 py-2 rounded-md font-semibold transition-colors" href="#" title="Add to cart" data-product="satisfyer penguin" data-price="39.99" style="background: linear-gradient(45deg, #ff9a9e, #fecfef); color: #fff; border: none;">
+              Add to cart
+            </a>
+            <a class="mt-3 px-4 py-2 rounded-md font-semibold transition-colors buy-now-btn" href="pay.html?product=satisfyer%20penguin&price=39.99&type=product" title="Buy now" style="background: rgba(255,255,255,0.15); color: #fff; border: 1px solid rgba(255,255,255,0.3);">
+              Buy Now
+            </a>
+          </div>
+          <!-- Product item 2 -->
+          <div class="p-6 rounded-lg shadow-lg hover:shadow-2xl transition-all duration-300 text-center flex flex-col items-center" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); min-height: 350px; width: 100%; max-width: 300px;">
+            <div class="product-image-container">
+                <img src="picos/vubu.avif" srcset="picos/vubu.avif 300w" sizes="(max-width: 600px) 100vw, 300px" width="300" height="200" alt="Mini Massager - Compact intimate device" class="product-image" loading="lazy">
+                <i class="fas fa-rose text-5xl" style="color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,0.3);"></i>
+            </div>
+            <h1 class="text-xl font-bold mb-3" style="color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,0.3);">Mini Massager</h1>
+            <p class="text-sm mb-4" style="color: rgba(255,255,255,0.8);">Beautiful relaxing Massager</p>
+            <p class="text-lg font-semibold mb-4" style="color:#ffced6;">$24.99</p>
+            <a class="js-add-product px-4 py-2 rounded-md font-semibold transition-colors" href="#" title="Add to cart" data-product="Mini Massager" data-price="24.99" style="background: linear-gradient(45deg, #ff9a9e, #fecfef); color: #fff; border: none;">
+              Add to cart
+            </a>
+            <a class="mt-3 px-4 py-2 rounded-md font-semibold transition-colors" href="pay.html?product=Mini%20Massager&price=24.99&type=product" title="Buy now" style="background: rgba(255,255,255,0.15); color: #fff; border: 1px solid rgba(255,255,255,0.3);">
+              Buy Now
+            </a>
+          </div>
+          <!-- Product item 3 -->
+          <div class="p-6 rounded-lg shadow-lg hover:shadow-2xl transition-all duration-300 text-center flex flex-col items-center" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); min-height: 350px; width: 100%; max-width: 300px;">
+            <div class="product-image-container">
+                <img src="picos/ole.webp" srcset="picos/ole.webp 300w" sizes="(max-width: 600px) 100vw, 300px" width="300" height="200" alt="Romantic Bird - Decorative romantic item" class="product-image" loading="lazy">
+                <i class="fas fa-gem text-5xl" style="color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,0.3);"></i>
+            </div>
+            <h1 class="text-xl font-bold mb-3" style="color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,0.3);">Romantic Bird</h1>
+            <p class="text-sm mb-4" style="color: rgba(255,255,255,0.8);">Elegant pieces to show yourself love</p>
+            <p class="text-lg font-semibold mb-4" style="color:#ffced6;">$29.99</p>
+            <a class="js-add-product px-4 py-2 rounded-md font-semibold transition-colors" href="#" title="Add to cart" data-product="Romantic Bird" data-price="29.99" style="background: linear-gradient(45deg, #ff9a9e, #fecfef); color: #fff; border: none;">
+              Add to cart
+            </a>
+            <a class="mt-3 px-4 py-2 rounded-md font-semibold transition-colors" href="pay.html?product=Romantic%20Bird&price=29.99&type=product" title="Buy now" style="background: rgba(255,255,255,0.15); color: #fff; border: 1px solid rgba(255,255,255,0.3);">
+              Buy Now
+            </a>
+          </div>
+          <!-- Product item 4 -->
+          <div class="p-6 rounded-lg shadow-lg hover:shadow-2xl transition-all duration-300 text-center flex flex-col items-center" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); min-height: 350px; width: 100%; max-width: 300px;">
+            <div class="w-full h-40 rounded-md mb-4 flex items-center justify-center" style="background: linear-gradient(45deg, #ff9a9e, #fecfef); border-radius: 15px;">
+                <i class="fas fa-champagne-glasses text-5xl" style="color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,0.3);"></i>
+            </div>
+            <h1 class="text-xl font-bold mb-3" style="color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,0.3);">Romantic Dinner Set</h1>
+            <p class="text-sm mb-4" style="color: rgba(255,255,255,0.8);">Perfect for intimate dinners</p>
+            <p class="text-lg font-semibold mb-4" style="color:#ffced6;">$59.99</p>
+            <a class="js-add-product px-4 py-2 rounded-md font-semibold transition-colors" href="#" title="Add to cart" data-product="Romantic Dinner Set" data-price="59.99" style="background: linear-gradient(45deg, #ff9a9e, #fecfef); color: #fff; border: none;">
+              Add to cart
+            </a>
+            <a class="mt-3 px-4 py-2 rounded-md font-semibold transition-colors" href="pay.html?product=Romantic%20Dinner%20Set&price=59.99&type=product" title="Buy now" style="background: rgba(255,255,255,0.15); color: #fff; border: 1px solid rgba(255,255,255,0.3);">
+              Buy Now
+            </a>
+          </div>
+          <!-- Product item 5 -->
+          <div class="p-6 rounded-lg shadow-lg hover:shadow-2xl transition-all duration-300 text-center flex flex-col items-center" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); min-height: 350px; width: 100%; max-width: 300px;">
+            <div class="product-image-container">
+                <img src="picos/under.jpeg" srcset="picos/under.jpeg 300w" sizes="(max-width: 600px) 100vw, 300px" width="300" height="200" alt="Romantic Candles - Ambient lighting for romance" class="product-image" loading="lazy">
+                <i class="fas fa-candle-holder text-5xl" style="color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,0.3);"></i>
+            </div>
+            <h1 class="text-xl font-bold mb-3" style="color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,0.3);">Romantic Candles</h1>
+            <p class="text-sm mb-4" style="color: rgba(255,255,255,0.8);">Create the perfect ambiance</p>
+            <p class="text-lg font-semibold mb-4" style="color:#ffced6;">$14.99</p>
+            <a class="js-add-product px-4 py-2 rounded-md font-semibold transition-colors" href="#" title="Add to cart" data-product="Romantic Candles" data-price="14.99" style="background: linear-gradient(45deg, #ff9a9e, #fecfef); color: #fff; border: none;">
+              Add to cart
+            </a>
+            <a class="mt-3 px-4 py-2 rounded-md font-semibold transition-colors" href="pay.html?product=Romantic%20Candles&price=14.99&type=product" title="Buy now" style="background: rgba(255,255,255,0.15); color: #fff; border: 1px solid rgba(255,255,255,0.3);">
+              Buy Now
+            </a>
+          </div>
+          <!-- Product item 6 -->
+          <div class="p-6 rounded-lg shadow-lg hover:shadow-2xl transition-all duration-300 text-center flex flex-col items-center" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); min-height: 350px; width: 100%; max-width: 300px;">
+            <div class="w-full h-40 rounded-md mb-4 flex items-center justify-center" style="background: linear-gradient(45deg, #ff9a9e, #fecfef); border-radius: 15px;">
+                <i class="fas fa-gift text-5xl" style="color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,0.3);"></i>
+            </div>
+            <h1 class="text-xl font-bold mb-3" style="color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,0.3);">Surprise Gift Box</h1>
+            <p class="text-sm mb-4" style="color: rgba(255,255,255,0.8);">A magical surprise for your loved one</p>
+            <p class="text-lg font-semibold mb-4" style="color:#ffced6;">$49.99</p>
+            <a class="js-add-product px-4 py-2 rounded-md font-semibold transition-colors" href="#" title="Add to cart" data-product="Surprise Gift Box" data-price="49.99" style="background: linear-gradient(45deg, #ff9a9e, #fecfef); color: #fff; border: none;">
+              Add to cart
+            </a>
+            <a class="mt-3 px-4 py-2 rounded-md font-semibold transition-colors" href="pay.html?product=Surprise%20Gift%20Box&price=49.99&type=product" title="Buy now" style="background: rgba(255,255,255,0.15); color: #fff; border: 1px solid rgba(255,255,255,0.3);">
+              Buy Now
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Romantic Scroll Indicator -->
+      <div class="scroll-indicator">
+        <i class="fas fa-heart"></i> Scroll to explore more romantic products <i class="fas fa-heart"></i>
+      </div>
+    </section>
+
+    <!-- Payment Popup -->
+    <div id="payment-overlay" class="payment-overlay">
+        <div class="payment-modal">
+            <button class="close-payment" onclick="closePaymentPopup()">&times;</button>
+            <h2>Complete Your Purchase</h2>
+            <p>Choose your preferred payment method to complete your romantic purchase</p>
+            
+            <div class="payment-options">
+                <div class="payment-option" onclick="selectPaymentMethod('bitcoin')">
+                    <h3>₿ Bitcoin</h3>
+                    <p>Pay with Bitcoin - Fast and secure</p>
+                </div>
+                <div class="payment-option" onclick="selectPaymentMethod('paypal')">
+                    <h3>💳 PayPal</h3>
+                    <p>Pay with PayPal - Easy and trusted</p>
+                </div>
+            </div>
+            
+            <div id="bitcoin-address" class="payment-address">
+                <strong>Bitcoin Address:</strong><br>
+                <span id="bitcoin-text">bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh</span>
+                <button class="copy-btn" onclick="copyToClipboard('bitcoin-text', 'Bitcoin address')">📋 Copy</button>
+            </div>
+            
+            <div id="paypal-link" class="payment-address">
+                <strong>PayPal Payment Link:</strong><br>
+                <span id="paypal-text">https://paypal.me/pamPowersRomance/39.99</span>
+                <button class="copy-btn" onclick="copyToClipboard('paypal-text', 'PayPal link')">📋 Copy</button>
+            </div>
+            
+            <div class="payment-buttons">
+                <button class="payment-btn primary" onclick="confirmPayment()">Confirm Payment</button>
+                <button class="payment-btn secondary" onclick="closePaymentPopup()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Shopping Cart Sidebar -->
+    <aside class="cart js-cart flex flex-col">
+      <div class="cart__header flex justify-between items-center p-4 shadow-md" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255, 255, 255, 0.2);">
+        <h1 class="text-2xl font-bold" style="color: #2c3e50; text-shadow: 0 1px 3px rgba(0,0,0,0.1);">Shopping cart</h1>
+        <a class="js-toggle-cart font-semibold text-lg" href="#" title="Close cart" style="color: #ff6b6b; z-index: 3000; position: relative;">
+          <i class="fas fa-times"></i>
+        </a>
+      </div>
+      <div class="cart__products js-cart-products flex-grow p-4 overflow-y-auto">
+        <p class="cart__empty js-cart-empty text-gray-500 italic text-center p-8">
+          Add a product to your cart
+        </p>
+        <div class="cart__product js-cart-product-template hidden">
+          <article class="js-cart-product bg-gray-800 p-4 rounded-md shadow-sm mb-4 border-b border-gray-700">
+            <h1 class="text-lg font-semibold text-gray-200">Product title</h1>
+            <p>
+              <a class="js-remove-product text-red-500 hover:underline" href="#" title="Delete product">
+                Delete product
+              </a>
+            </p>
+          </article>
+        </div>
+      </div>
+      <div class="cart__footer p-4 shadow-inner text-right" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-top: 1px solid rgba(255, 255, 255, 0.2); position: relative; z-index: 1003; pointer-events: auto;">
+        <a class="px-6 py-3 rounded-md font-bold transition-colors js-checkout-btn" href="pay.html" title="Buy products" onclick="event.preventDefault(); event.stopPropagation(); if(typeof window.checkout === 'function') { window.checkout(); } else if(typeof checkout === 'function') { checkout(); } return false;" style="background: linear-gradient(45deg, #ff9a9e, #fecfef); color: #fff; border: none; cursor: pointer; display: inline-block; position: relative; z-index: 1004; pointer-events: auto; text-decoration: none;">
+          Buy products
+        </a>
+      </div>
+    </aside>
+
+    <div class="lightbox js-lightbox js-toggle-cart"></div>
+
+    <!-- Testimonials Section -->
+    <div class="container mx-auto px-4 mt-8">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold mb-4" style="color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">
+                    <span style="background: linear-gradient(45deg, #ff9a9e, #fecfef); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">L</span>ove Stories
+                </h2>
+                <p class="text-lg" style="color: rgba(255,255,255,0.8);">What our customers say about their romantic experiences</p>
+            </div>
+            <div id="testimonial-slider" class="owl-carousel">
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <div class="testimonial-icon">
+                            <i class="fa fa-heart"></i>
+                        </div>
+                        <p class="description">
+                            "This toy is amazing . It extremely soft which make it super realistic. Easy to clean and to play with. I had a lot of fun last night and probably is one of my favorites."
+                        </p>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="title">Michael</h3>
+                    
+                    </div>
+                </div>
+
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <div class="testimonial-icon">
+                            <i class="fa fa-heart"></i>
+                        </div>
+                        <p class="description">
+                            "I bought this for the hubby, no regrets! The quality is top notch, price is great, easy to use."
+                        </p>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="title">Emma & James</h3>
+                    </div>
+                </div>
+
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <div class="testimonial-icon">
+                            <i class="fa fa-heart"></i>
+                        </div>
+                        <p class="description">
+                            "Well-Made and durable recently purchased this and was impressed with its overall quality. The material feels soft, durable, and realistic, which enhances the user experience. The design is compact I can store and travel it without much trouble"
+                        </p>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="title">Alex</h3>
+                    </div>
+                </div>
+
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <div class="testimonial-icon">
+                            <i class="fa fa-heart"></i>
+                        </div>
+                        <p class="description">
+                            "At first I had my doubts about whether this was the right product. But now that I have it, I can give assurance that if quality is 100% recommended."
+                        </p>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="title">Isabella</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts (updated jQuery for security & compatibility) -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
+
+
+
+    <!-- Review Section -->
+    <section class="review-input" style="max-width: 1200px; margin: 0 auto; padding: 32px; margin-top: 32px;">
+        <div style="text-align: center; margin-bottom: 24px;">
+            <h2 style="font-size: 2.25rem; font-weight: bold; margin-bottom: 8px; color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">
+                <span style="background: linear-gradient(45deg, #ff9a9e, #fecfef); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">P</span>amPowers Reviews
+            </h2>
+            <p style="font-size: 1.125rem; color: rgba(255,255,255,0.8); margin: 0;">Share your thoughts on our products</p>
+        </div>
+        <div class="review-form" style="display: flex; flex-direction: column; gap: 16px; align-items: center;">
+            <textarea name="review-textarea" id="textarea" style="width: 100%; height: 160px; padding: 16px; border-radius: 8px; resize: none; outline: none; color: #fff; border: 2px solid #ff9a9e; background-color: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); font-family: inherit; font-size: 14px; line-height: 1.5;" placeholder="Write your review here..."></textarea>
+            <button type="button" id="submit-review" style="padding: 12px 24px; border-radius: 8px; font-weight: bold; transition: all 0.2s; background: linear-gradient(45deg, #ff9a9e, #fecfef); color: #fff; border: none; cursor: pointer; font-size: 16px;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">Submit Review</button>
+        </div>
+        <div id="display-reviews" style="margin-top: 24px; min-height: 50px;">
+            <!-- Reviews will be displayed here -->
+            <p style="text-align: center; color: rgba(255,255,255,0.6); font-style: italic; margin: 20px 0;">No reviews yet. Be the first to share your thoughts!</p>
+        </div>
+    </section>
+    <script src="Shop.js"></script>
+    <script src="reviews.js"></script>
+    
+    <!-- Initialize Owl Carousel for testimonials -->
+    <script>
+        $(document).ready(function(){
+            $("#testimonial-slider").owlCarousel({
+                items:3,
+                itemsDesktop:[1000,3],
+                itemsDesktopSmall:[980,2],
+                itemsTablet:[768,2],
+                itemsMobile:[650,1],
+                pagination:true,
+                navigation:false,
+                slideSpeed:1000,
+                autoPlay:true
+            });
+        });
+    </script>
+</body>
+</html>

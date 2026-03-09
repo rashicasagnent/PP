@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PamPowers Popular - Most Loved</title>
+    <meta name="description" content="Discover the most loved PamPowers profiles. Explore our most popular romantic connections and start your journey today.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://pampowers.com/popular.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="PamPowers Popular - Most Loved">
+    <meta property="og:description" content="Discover the most loved PamPowers profiles. Explore our most popular romantic connections and start your journey today.">
+    <meta property="og:image" content="https://pampowers.com/picos/2.webp">
+    <meta property="og:url" content="https://pampowers.com/popular.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,700;0,800;0,900;1,700;1,800;1,900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #03081d 0%, #764ba2 100%);
+            color: #2c3e50;
+        }
+
+        .container {
+            display: flex;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        .navbar {
+            width: 15%;
+            min-width: 200px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background: rgba(18, 18, 28, 0.92);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            padding: 28px 0;
+            border-right: 1px solid rgba(255, 255, 255, 0.06);
+            box-shadow: 4px 0 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', 'DM Sans', serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+            padding: 0 20px 32px;
+            margin-bottom: 0;
+            letter-spacing: 0.02em;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            transition: color 0.2s ease;
+        }
+        .logo:hover {
+            color: #fecfef;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            padding: 12px 12px 0;
+            margin: 0;
+            width: 100%;
+            gap: 0;
+        }
+
+        .nav-buttons {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+
+        .nav-buttons a {
+            color: rgba(255, 255, 255, 0.75);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            line-height: 1.2;
+            display: flex;
+            align-items: center;
+            min-height: 32px;
+            min-width: 44px;
+            padding: 4px 14px;
+            border-radius: 8px;
+            transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+            position: relative;
+            border-left: 3px solid transparent;
+        }
+
+        .nav-buttons a:hover {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.06);
+            border-left-color: #fecfef;
+        }
+
+        #A1 a {
+            color: #fecfef;
+            border-left-color: #ff6b6b;
+        }
+        #A1 a:hover {
+            color: #fff;
+            background: rgba(254, 207, 239, 0.12);
+            border-left-color: #ff6b6b;
+        }
+
+        .nav-footer {
+            margin-top: auto;
+            width: 100%;
+            padding: 16px 20px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            position: sticky;
+            bottom: 0;
+        }
+
+        .nav-click {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .nav-button a {
+            color: rgba(255, 255, 255, 0.45);
+            text-decoration: none;
+            font-size: 0.8rem;
+            padding: 6px 0;
+            transition: color 0.2s ease;
+        }
+
+        .nav-button a:hover {
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .white {
+            width: 85%;
+            height: 100vh;
+            background: linear-gradient(135deg, #010514 0%, #764ba2 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            position: relative;
+            overflow-y: auto;
+            padding: 40px;
+        }
+
+        .white::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="hearts" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><text x="10" y="15" text-anchor="middle" font-size="12" fill="rgba(255,255,255,0.1)">♥</text></pattern></defs><rect width="100" height="100" fill="url(%23hearts)"/></svg>');
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .h51{
+            color: #fff;
+            font-family: 'Cormorant Garamond', 'DM Sans', serif;
+            font-size: 3rem;
+            font-weight: 800;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            background: linear-gradient(45deg, #ff9a9e, #fecfef, #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+        }
+
+        .h52{
+            color: #ffffff;
+            font-family: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 400;
+            text-shadow: 0 1px 5px rgba(0,0,0,0.2);
+            margin-bottom: 40px;
+        }
+
+        .gallery-container {
+            margin-top: 40px;
+            width: 100%;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 20px 0;
+        }
+
+        .profile-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .profile-image {
+            width: 100%;
+            height: 250px;
+            border-radius: 15px;
+            object-fit: contain;
+            object-position: center;
+            background-color: rgba(255, 255, 255, 0.08);
+            margin: 0 auto 20px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-card:hover .profile-image {
+            border-color: #ff9a9e;
+            transform: scale(1.02);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .profile-name {
+            font-family: 'Cormorant Garamond', 'DM Sans', serif;
+            color: #fff;
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .profile-contact {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1rem;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .contact-icon {
+            color: #ff9a9e;
+            font-size: 1.1rem;
+        }
+
+        .phone-number {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 15px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .phone-number:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: #ff9a9e;
+            cursor: pointer;
+        }
+
+        .profile-status {
+            background: linear-gradient(45deg, #ff9a9e, #fecfef);
+            color: #fff;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-top: 15px;
+            display: inline-block;
+        }
+
+        .scroll-indicator {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 100;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .scroll-indicator:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        /* Payment Modal Styles */
+        .payment-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .payment-modal.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .payment-content {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+
+        .payment-modal.show .payment-content {
+            transform: scale(1);
+        }
+
+        .payment-content h2 {
+            color: #fff;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .payment-content p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .payment-amount {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .payment-amount h3 {
+            color: #fff;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .payment-amount .price {
+            color: #ff9a9e;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .payment-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .payment-btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 120px;
+        }
+
+        .payment-btn.pay {
+            background: linear-gradient(45deg, #ff9a9e, #fecfef);
+            color: #fff;
+        }
+
+        .payment-btn.pay:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 154, 158, 0.4);
+        }
+
+        .payment-btn.cancel {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .payment-btn.cancel:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            body {
+                overflow-x: hidden;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .container {
+                flex-direction: column;
+                height: auto;
+                min-height: 100vh;
+                overflow-x: hidden;
+            }
+
+            .navbar {
+                width: 100%;
+                min-width: unset;
+                height: auto;
+                flex-direction: row;
+                flex-wrap: wrap;
+                padding: 12px 16px;
+                border-right: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+                justify-content: center;
+                align-items: center;
+                gap: 8px;
+            }
+
+            .logo {
+                font-family: 'Cormorant Garamond', 'DM Sans', serif;
+                font-size: 1.75rem;
+                font-weight: 700;
+                margin-bottom: 0;
+                padding: 0 0 10px;
+                border-bottom: none;
+                order: 1;
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-links {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 6px;
+                padding: 0;
+                order: 2;
+                width: 100%;
+                margin-top: 2px;
+            }
+
+            .nav-buttons {
+                margin: 0;
+            }
+            .nav-buttons a {
+                font-size: 0.95rem;
+                font-weight: 500;
+                line-height: 1.2;
+                padding: 8px 14px;
+                min-height: 44px;
+                min-width: 44px;
+                box-sizing: border-box;
+                border-left: none;
+                border-radius: 20px;
+            }
+            .nav-buttons a:hover {
+                border-left: none;
+                background: rgba(255, 255, 255, 0.1);
+            }
+            #A1 a {
+                border-left: none;
+            }
+
+            .nav-footer {
+                order: 3;
+                width: 100%;
+                margin-top: 8px;
+                padding: 8px 0 0;
+                border-top: 1px solid rgba(255, 255, 255, 0.06);
+            }
+
+            .nav-click {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px 16px;
+            }
+            .nav-button a {
+                padding: 4px 0;
+            }
+
+            .white {
+                width: 100%;
+                height: auto;
+                min-height: auto;
+                padding: 20px 16px;
+                overflow-x: hidden;
+                order: 1;
+            }
+
+            .navbar {
+                order: 2;
+                border-bottom: none;
+                border-top: 1px solid rgba(255, 255, 255, 0.06);
+            }
+
+            .h51 {
+                font-size: 1.6rem;
+            }
+
+            .h52 {
+                font-size: 0.95rem;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .profile-image {
+                height: 200px;
+            }
+            
+            .profile-name {
+                font-size: 1.3rem;
+            }
+            
+            .payment-content {
+                padding: 30px 20px;
+                margin: 20px;
+            }
+            
+            .payment-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar">
+            <div class="logo">PamPowers</div>
+            <ul class="nav-links">
+                <li class="nav-buttons" id="A5"><a href="Index.html">Home</a></li>
+                <li class="nav-buttons" id="A4"><a href="popular.html">Popular</a></li>
+                <li class="nav-buttons" id="A3"><a href="Shop.html">Shop</a></li>
+                <li class="nav-buttons" id="A2"><a href="Beta.html">Hot Ones</a></li>
+                <li class="nav-buttons" id="A1"><a href="#romantic">Romantic</a></li>
+            </ul>
+            <div class="nav-footer">
+                <ul class="nav-click">
+                    <li class="nav-button"><a href="#">Privacy Policy</a></li>
+                    <li class="nav-button"><a href="terms.html">Terms of Service</a></li>
+                    <li class="nav-button"><a href="#">Help</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="white">
+            <div class="content">
+                <h1 class="h51">Most Popular Profiles</h1>
+                <h2 class="h52">Meet our most loved community members</h2>
+                
+                <div class="gallery-container">
+                    <div class="gallery-grid">
+                        <!-- Profile 1 - User's own picture -->
+                        <div class="profile-card" onclick="showPaymentModal('Your Name')">
+                            <img src="picos/2.webp" srcset="picos/2.webp 400w" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px" width="400" height="250" alt="Jenny Queen - Profile" class="profile-image" fetchpriority="high">
+                            <h3 class="profile-name">Jenny Queen</h3>
+                            <div class="profile-contact">
+                                <span class="contact-icon"></span>
+                                <span class="phone-number">Get Phone Number</span>
+                            </div>
+                            <div class="profile-status">Available</div>
+                        </div>
+
+                        <!-- Profile 2 -->
+                        <div class="profile-card" onclick="showPaymentModal('Emma Rose')">
+                            <img src="picos/3.webp" srcset="picos/3.webp 400w" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px" width="400" height="250" alt="Emma Rose - Profile" class="profile-image" loading="lazy">
+                            <h3 class="profile-name">Emma Rose</h3>
+                            <div class="profile-contact">
+                                <span class="contact-icon"></span>
+                                <span class="phone-number">Get Phone Number</span>
+                            </div>
+                            <div class="profile-status">Available</div>
+                        </div>
+
+                        <!-- Profile 3 -->
+                        <div class="profile-card" onclick="showPaymentModal('Alexander Heart')">
+                            <img src="picos/4.webp" srcset="picos/4.webp 400w" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px" width="400" height="250" alt="Alexander Heart - Profile" class="profile-image" loading="lazy">
+                            <h3 class="profile-name">Alexander Heart</h3>
+                            <div class="profile-contact">
+                                <span class="contact-icon"></span>
+                                <span class="phone-number">Get Phone Number</span>
+                            </div>
+                            <div class="profile-status">Available</div>
+                        </div>
+
+                        <!-- Profile 4 -->
+                        <div class="profile-card" onclick="showPaymentModal('Isabella Moon')">
+                            <img src="picos/5.webp" srcset="picos/5.webp 400w" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px" width="400" height="250" alt="Isabella Moon - Profile" class="profile-image" loading="lazy">
+                            <h3 class="profile-name">Isabella Moon</h3>
+                            <div class="profile-contact">
+                                <span class="contact-icon"></span>
+                                <span class="phone-number">Get Phone Number</span>
+                            </div>
+                            <div class="profile-status">Available</div>
+                        </div>
+
+                        <!-- Profile 5 -->
+                        <div class="profile-card" onclick="showPaymentModal('Sebastian Star')">
+                            <img src="picos/24.webp" srcset="picos/24.webp 400w" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px" width="400" height="250" alt="Sebastian Star - Profile" class="profile-image" loading="lazy">
+                            <h3 class="profile-name">Sebastian Star</h3>
+                            <div class="profile-contact">
+                                <span class="contact-icon"></span>
+                                <span class="phone-number">Get Phone Number</span>
+                            </div>
+                            <div class="profile-status">Available</div>
+                        </div>
+
+                        <!-- Profile 6 -->
+                        <div class="profile-card" onclick="showPaymentModal('Luna Valentine')">
+                            <img src="picos/6.webp" srcset="picos/6.webp 400w" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px" width="400" height="250" alt="Luna Valentine - Profile" class="profile-image" loading="lazy">
+                            <h3 class="profile-name">Luna Valentine</h3>
+                            <div class="profile-contact">
+                                <span class="contact-icon"></span>
+                                <span class="phone-number">Get Phone Number</span>
+                            </div>
+                            <div class="profile-status">Available</div>
+                        </div>
+
+                        <!-- Profile 7 -->
+                        <div class="profile-card" onclick="showPaymentModal('Phoenix Love')">
+                            <img src="picos/7.webp" srcset="picos/7.webp 400w" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px" width="400" height="250" alt="Phoenix Love - Profile" class="profile-image" loading="lazy">
+                            <h3 class="profile-name">Phoenix Love</h3>
+                            <div class="profile-contact">
+                                <span class="contact-icon"></span>
+                                <span class="phone-number">Get Phone Number</span>
+                            </div>
+                            <div class="profile-status">Available</div>
+                        </div>
+
+                        <!-- Profile 8 -->
+                        <div class="profile-card" onclick="showPaymentModal('Aurora Dream')">
+                            <img src="picos/8.webp" srcset="picos/8.webp 400w" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px" width="400" height="250" alt="Aurora Dream - Profile" class="profile-image" loading="lazy">
+                            <h3 class="profile-name">Aurora Dream</h3>
+                            <div class="profile-contact">
+                                <span class="contact-icon"></span>
+                                <span class="phone-number">Get Phone Number</span>
+                            </div>
+                            <div class="profile-status">Available</div>
+                        </div>
+
+                        <!-- Profile 9 -->
+                        <div class="profile-card" onclick="showPaymentModal('Crystal Sky')">
+                            <img src="picos/9.webp" srcset="picos/9.webp 400w" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px" width="400" height="250" alt="Crystal Sky - Profile" class="profile-image" loading="lazy">
+                            <h3 class="profile-name">Crystal Sky</h3>
+                            <div class="profile-contact">
+                                <span class="contact-icon"></span>
+                                <span class="phone-number">Get Phone Number</span>
+                            </div>
+                            <div class="profile-status">Available</div>
+                        </div>
+
+                        <!-- Profile 10 -->
+                        <div class="profile-card" onclick="showPaymentModal('Maya Star')">
+                            <img src="picos/10.webp" srcset="picos/10.webp 400w" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px" width="400" height="250" alt="Maya Star - Profile" class="profile-image" loading="lazy">
+                            <h3 class="profile-name">Maya Star</h3>
+                            <div class="profile-contact">
+                                <span class="contact-icon"></span>
+                                <span class="phone-number">Get Phone Number</span>
+                            </div>
+                            <div class="profile-status">Available</div>
+                        </div>
+
+                        <!-- Profile 11 -->
+                        <div class="profile-card" onclick="showPaymentModal('Zara Moon')">
+                            <img src="picos/11.webp" srcset="picos/11.webp 400w" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px" width="400" height="250" alt="Zara Moon - Profile" class="profile-image" loading="lazy">
+                            <h3 class="profile-name">Zara Moon</h3>
+                            <div class="profile-contact">
+                                <span class="contact-icon"></span>
+                                <span class="phone-number">Get Phone Number</span>
+                            </div>
+                            <div class="profile-status">Available</div>
+                        </div>
+
+                        <!-- Profile 12 -->
+                        <div class="profile-card" onclick="showPaymentModal('Nova Heart')">
+                            <img src="picos/12.webp" srcset="picos/12.webp 400w" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px" width="400" height="250" alt="Nova Heart - Profile" class="profile-image" loading="lazy">
+                            <h3 class="profile-name">Nova Heart</h3>
+                            <div class="profile-contact">
+                                <span class="contact-icon"></span>
+                                <span class="phone-number">Get Phone Number</span>
+                            </div>
+                            <div class="profile-status">Available</div>
+                        </div>
+
+                        <!-- Profile 13 -->
+                        <div class="profile-card" onclick="showPaymentModal('Sage Rose')">
+                            <img src="picos/13.webp" srcset="picos/13.webp 400w" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px" width="400" height="250" alt="Sage Rose - Profile" class="profile-image" loading="lazy">
+                            <h3 class="profile-name">Sage Rose</h3>
+                            <div class="profile-contact">
+                                <span class="contact-icon"></span>
+                                <span class="phone-number">Get Phone Number</span>
+                            </div>
+                            <div class="profile-status">Available</div>
+                        </div>
+
+                        <!-- Profile 14 -->
+                        <div class="profile-card" onclick="showPaymentModal('River Sky')">
+                            <img src="picos/14.webp" srcset="picos/14.webp 400w" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px" width="400" height="250" alt="River Sky - Profile" class="profile-image" loading="lazy">
+                            <h3 class="profile-name">River Sky</h3>
+                            <div class="profile-contact">
+                                <span class="contact-icon"></span>
+                                <span class="phone-number">Get Phone Number</span>
+                            </div>
+                            <div class="profile-status">Available</div>
+                        </div>
+
+                        <!-- Profile 15 -->
+                        <div class="profile-card" onclick="showPaymentModal('Ocean Dream')">
+                            <img src="picos/15.webp" srcset="picos/15.webp 400w" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px" width="400" height="250" alt="Ocean Dream - Profile" class="profile-image" loading="lazy">
+                            <h3 class="profile-name">Ocean Dream</h3>
+                            <div class="profile-contact">
+                                <span class="contact-icon"></span>
+                                <span class="phone-number">Get Phone Number</span>
+                            </div>
+                            <div class="profile-status">Available</div>
+                        </div>
+
+                        <!-- Profile 16 -->
+                        <div class="profile-card" onclick="showPaymentModal('Forest Star')">
+                            <img src="picos/16.webp" srcset="picos/16.webp 400w" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px" width="400" height="250" alt="Forest Star - Profile" class="profile-image" loading="lazy">
+                            <h3 class="profile-name">Forest Star</h3>
+                            <div class="profile-contact">
+                                <span class="contact-icon"></span>
+                                <span class="phone-number">Get Phone Number</span>
+                            </div>
+                            <div class="profile-status">Available</div>
+                        </div>
+
+                        <!-- Profile 17 -->
+                        <div class="profile-card" onclick="showPaymentModal('Meadow Love')">
+                            <img src="picos/17.webp" srcset="picos/17.webp 400w" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px" width="400" height="250" alt="Meadow Love - Profile" class="profile-image" loading="lazy">
+                            <h3 class="profile-name">Meadow Love</h3>
+                            <div class="profile-contact">
+                                <span class="contact-icon"></span>
+                                <span class="phone-number">Get Phone Number</span>
+                            </div>
+                            <div class="profile-status">Available</div>
+                        </div>
+
+                        <!-- Profile 18 -->
+                        <div class="profile-card" onclick="showPaymentModal('Storm Heart')">
+                            <img src="picos/18.webp" srcset="picos/18.webp 400w" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px" width="400" height="250" alt="Storm Heart - Profile" class="profile-image" loading="lazy">
+                            <h3 class="profile-name">Storm Heart</h3>
+                            <div class="profile-contact">
+                                <span class="contact-icon"></span>
+                                <span class="phone-number">Get Phone Number</span>
+                            </div>
+                            <div class="profile-status">Available</div>
+                        </div>
+
+                        <!-- Profile 19 -->
+                        <div class="profile-card" onclick="showPaymentModal('Blaze Moon')">
+                            <img src="picos/19.webp" srcset="picos/19.webp 400w" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px" width="400" height="250" alt="Blaze Moon - Profile" class="profile-image" loading="lazy">
+                            <h3 class="profile-name">Blaze Moon</h3>
+                            <div class="profile-contact">
+                                <span class="contact-icon"></span>
+                                <span class="phone-number">Get Phone Number</span>
+                            </div>
+                            <div class="profile-status">Available</div>
+                        </div>
+
+                        <!-- Profile 20 -->
+                        <div class="profile-card" onclick="showPaymentModal('Cosmic Rose')">
+                            <img src="picos/21.webp" srcset="picos/21.webp 400w" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px" width="400" height="250" alt="Cosmic Rose - Profile" class="profile-image" loading="lazy">
+                            <h3 class="profile-name">Cosmic Rose</h3>
+                            <div class="profile-contact">
+                                <span class="contact-icon"></span>
+                                <span class="phone-number">Get Phone Number</span>
+                            </div>
+                            <div class="profile-status">Available</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Scroll to top button -->
+            <div class="scroll-indicator" onclick="scrollToTop()">
+                ↑
+            </div>
+        </div>
+    </div>
+
+    <!-- Payment Modal -->
+    <div id="paymentModal" class="payment-modal">
+        <div class="payment-content">
+            <h2>Get Contact Information</h2>
+            <p>Unlock the phone number for <span id="profileName"></span> and start your romantic journey!</p>
+            
+            <div class="payment-amount">
+                <h3>Premium Access</h3>
+                <div class="price">$9.99</div>
+                <p style="margin: 10px 0; color: rgba(255,255,255,0.8);">One-time payment</p>
+            </div>
+            
+            <div class="payment-buttons">
+                <button class="payment-btn pay" onclick="processPayment()">Pay Now</button>
+                <button class="payment-btn cancel" onclick="closePaymentModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Scroll to top functionality
+        function scrollToTop() {
+            const whiteSection = document.querySelector('.white');
+            whiteSection.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Show/hide scroll indicator based on scroll position
+        window.addEventListener('scroll', function() {
+            const scrollIndicator = document.querySelector('.scroll-indicator');
+            const whiteSection = document.querySelector('.white');
+            
+            if (whiteSection.scrollTop > 300) {
+                scrollIndicator.style.opacity = '1';
+                scrollIndicator.style.visibility = 'visible';
+            } else {
+                scrollIndicator.style.opacity = '0';
+                scrollIndicator.style.visibility = 'hidden';
+            }
+        });
+
+        // Payment Modal Functions - Redirect to centralized paywall
+        function showPaymentModal(profileName) {
+            // Redirect to centralized paywall with profile information
+            window.location.href = `pay.html?member=${encodeURIComponent(profileName)}&role=Romantic%20Connection&type=contact`;
+        }
+
+        function closePaymentModal() {
+            // This function is kept for compatibility but redirects to paywall
+            showPaymentModal('Romantic Connection');
+        }
+
+        function processPayment() {
+            // This function is kept for compatibility but redirects to paywall
+            showPaymentModal('Romantic Connection');
+        }
+
+        // Close modal when clicking outside
+        document.addEventListener('click', function(event) {
+            const modal = document.getElementById('paymentModal');
+            if (event.target === modal) {
+                closePaymentModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closePaymentModal();
+            }
+        });
+
+        // Add click functionality to profile cards
+        document.addEventListener('DOMContentLoaded', function() {
+            const profileCards = document.querySelectorAll('.profile-card');
+            
+            profileCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    // Add a subtle animation when clicked
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 150);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

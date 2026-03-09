@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PamPowers Checkout - Secure Multi-Payment Gateway</title>
+    <meta name="description" content="Secure checkout for PamPowers romantic services and products. Pay with PayPal, Bitcoin, USDT, Skrill, Payoneer, or bank transfer.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://pampowers.com/pay.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="PamPowers Checkout - Secure Multi-Payment Gateway">
+    <meta property="og:description" content="Complete your PamPowers purchase securely using PayPal, crypto, or bank transfer.">
+    <meta property="og:image" content="https://pampowers.com/picos/2.webp">
+    <meta property="og:url" content="https://pampowers.com/pay.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,700;1,300;1,700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            /* More distinctive deep romantic background */
+            background:
+                radial-gradient(circle at top left, rgba(255, 99, 132, 0.25), transparent 55%),
+                radial-gradient(circle at bottom right, rgba(88, 101, 242, 0.3), transparent 60%),
+                linear-gradient(135deg, #050816 0%, #15162c 50%, #1f1033 100%);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('picos/6.webp');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            filter: blur(3px);
+            z-index: -1;
+        }
+        
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Dark glass overlay instead of flat white wash */
+            background: radial-gradient(circle at top, rgba(255, 255, 255, 0.06), transparent 55%)
+                        ,rgba(3, 7, 18, 0.75);
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.92);
+            border-radius: 18px;
+            border: 1px solid rgba(148, 163, 184, 0.35);
+            box-shadow:
+                0 24px 80px rgba(15, 23, 42, 0.9),
+                0 0 0 1px rgba(148, 163, 184, 0.25);
+            overflow: hidden;
+            backdrop-filter: blur(18px);
+        }
+
+        .header {
+            background: radial-gradient(circle at top, rgba(244, 114, 182, 0.22), transparent 60%)
+                        ,linear-gradient(135deg, #020617 0%, #020617 45%, #0b1727 100%);
+            color: #e5e7eb;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-family: 'Cormorant Garamond', 'DM Sans', serif;
+            font-size: 30px;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #f97316, #f43f5e, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 16px;
+            color: #cbd5f5;
+        }
+
+        .content {
+            padding: 30px;
+            color: #e5e7eb;
+        }
+
+        .order-summary {
+            background: radial-gradient(circle at top left, rgba(248, 250, 252, 0.06), transparent 60%);
+            padding: 20px;
+            border-radius: 14px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(148, 163, 184, 0.35);
+        }
+
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: #e5e7eb;
+        }
+
+        .order-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(148, 163, 184, 0.5);
+            color: #f9fafb;
+        }
+
+        .payment-methods {
+            margin-top: 30px;
+        }
+
+        .payment-method {
+            border: 1px solid rgba(148, 163, 184, 0.5);
+            border-radius: 14px;
+            padding: 20px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: rgba(15, 23, 42, 0.7);
+        }
+
+        .payment-method:hover {
+            border-color: #f97316;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.75);
+            background: radial-gradient(circle at top, rgba(248, 250, 252, 0.06), transparent 60%);
+        }
+
+        .payment-method.active {
+            border-color: #f97316;
+            background: radial-gradient(circle at top left, rgba(248, 250, 252, 0.08), transparent 65%);
+        }
+
+        .payment-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        .payment-icon {
+            width: 60px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+        
+        .payment-icon img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+        }
+        
+        .payment-icon img[src*="paypal"],
+        .payment-icon img[src*="bitcoin"],
+        .payment-icon img[src*="skrill"] {
+            width: auto;
+            height: 35px;
+        }
+
+        .payment-details {
+            display: none;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #e9ecef;
+        }
+
+        .payment-method.active .payment-details {
+            display: block;
+        }
+
+        .crypto-address {
+            background: rgba(15, 23, 42, 0.9);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            word-break: break-all;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            position: relative;
+            border: 1px dashed rgba(148, 163, 184, 0.7);
+            color: #e5e7eb;
+        }
+
+        .qr-code {
+            width: 200px;
+            height: 200px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid rgba(148, 163, 184, 0.7);
+            border-radius: 14px;
+            background: radial-gradient(circle at center, #ffffff, #e5e7eb);
+        }
+
+        .copy-btn, .action-btn {
+            background: linear-gradient(135deg, #f97316, #f43f5e);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 999px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-top: 10px;
+            transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.3s ease;
+            font-weight: 500;
+            box-shadow: 0 10px 25px rgba(248, 113, 113, 0.35);
+        }
+
+        .copy-btn:hover, .action-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 16px 35px rgba(248, 113, 113, 0.45);
+        }
+
+        .action-btn {
+            width: 100%;
+            padding: 15px;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+
+        .info-box {
+            background: rgba(30, 64, 175, 0.15);
+            border-left: 4px solid #60a5fa;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 10px;
+            font-size: 14px;
+            color: #dbeafe;
+        }
+
+        .success-box {
+            background: rgba(21, 128, 61, 0.18);
+            border-left: 4px solid #22c55e;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 10px;
+            font-size: 14px;
+            color: #bbf7d0;
+        }
+
+        .error-box {
+            background: rgba(185, 28, 28, 0.18);
+            border-left: 4px solid #f97373;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 10px;
+            font-size: 14px;
+            color: #fecaca;
+        }
+
+        #paypal-button-container {
+            margin: 20px 0;
+            min-height: 45px;
+        }
+
+        .instruction {
+            color: #9ca3af;
+            font-size: 14px;
+            margin: 10px 0;
+        }
+
+        .bank-details {
+            background: rgba(15, 23, 42, 0.9);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border: 1px solid rgba(148, 163, 184, 0.6);
+            color: #e5e7eb;
+        }
+
+        .bank-details div {
+            margin: 8px 0;
+            font-size: 14px;
+        }
+
+        .bank-details strong {
+            display: inline-block;
+            width: 150px;
+        }
+
+        h3 {
+            color: #e5e7eb;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .timer {
+            background: rgba(30, 64, 175, 0.3);
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            margin: 15px 0;
+            font-weight: bold;
+            color: #bfdbfe;
+        }
+
+        .amount-highlight {
+            font-size: 18px;
+            color: #f97316;
+            font-weight: bold;
+        }
+
+        .payment-status {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .spinner {
+            border: 3px solid rgba(148, 163, 184, 0.5);
+            border-top: 3px solid #f97316;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+            }
+            
+            .header h1 {
+                font-size: 24px;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .bank-details strong {
+                width: 120px;
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1> Checkout</h1>
+            <p>Choose your preferred payment method</p>
+        </div>
+
+        <div class="content">
+            <div class="order-summary">
+                <h3>Order Summary</h3>
+                <div class="order-item">
+                    <span id="product-name">Premium Service</span>
+                    <span id="product-price">$10.00</span>
+                </div>
+                <div class="order-item">
+                    <span>Processing Fee</span>
+                    <span>$0.00</span>
+                </div>
+                <div class="order-total">
+                    <span>Total</span>
+                    <span id="total-amount">$100.00</span>
+                </div>
+            </div>
+
+            <div class="payment-methods">
+                <h3>Select Payment Method</h3>
+
+                <!-- PayPal -->
+                <div class="payment-method" onclick="selectPayment('paypal')">
+                    <div class="payment-header">
+                        <div class="payment-icon">
+                            <img src="picos/Icon.jpeg" srcset="picos/Icon.jpeg 120w" sizes="120px" width="120" height="120" alt="PayPal Logo">
+                        </div>
+                        <div>
+                            <strong>PayPal</strong>
+                            <div class="instruction">Pay securely with PayPal or Credit Card</div>
+                        </div>
+                    </div>
+                    <div class="payment-details" id="paypal-details">
+                        <div class="info-box">
+                        </div>
+                        <div id="paypal-button-container"></div>
+                        <div id="paypal-status"></div>
+                    </div>
+                </div>
+
+
+
+                <!-- USDT -->
+                <div class="payment-method" onclick="selectPayment('usdt')">
+                    <div class="payment-header">
+                        <div class="payment-icon">💵</div>
+                        <div>
+                            <strong>USDT (Tether)</strong>
+                            <div class="instruction">Pay with USDT on ERC20 network</div>
+                        </div>
+                    </div>
+                    <div class="payment-details" id="usdt-details">
+                        <div class="info-box">
+                            ℹ️ Send exactly <span class="amount-highlight" id="usdt-amount-display">100 USDT</span> using ERC20 network.
+                        </div>
+                        <div class="timer" id="usdt-timer">Payment valid for: <span id="usdt-countdown">30:00</span></div>
+                        <canvas id="usdt-qr" class="qr-code"></canvas>
+                        <div class="crypto-address" id="usdt-address">0x47d7515b9fb795264ea92036318c8ee1f0427158</div>
+                        <button class="copy-btn" onclick="copyAddress('usdt-address', event)">📋 Copy USDT Address</button>
+                        <button class="action-btn" onclick="confirmCryptoPayment('usdt')">✅</button>
+                        <div class="instruction" style="margin-top: 15px;">
+                            ⚠️ Use ERC20 network only! Using wrong network will result in loss of funds.
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-- Skrill -->
+            
+
+               
+            </div>
+        </div>
+    </div>
+
+    <!-- PayPal SDK -->
+    <script src="https://www.paypal.com/sdk/js?client-id=test&currency=USD"></script>
+    
+    <!-- QR Code Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+
+    <script>
+        // ============================================
+        // CONFIGURATION - REPLACE WITH YOUR OWN VALUES
+        // ============================================
+        const CONFIG = {
+            // PayPal Configuration
+            // Get your client ID from: https://developer.paypal.com/dashboard/applications
+            // For testing: use 'test' or sandbox client ID
+            // For live payments: use your LIVE client ID
+            paypal: {
+                clientId: 'test', // ← REPLACE THIS WITH YOUR PAYPAL CLIENT ID
+            },
+            
+            // Product Details
+            product: {
+                name: 'Premium Service',     // ← Change product name
+                price: 100.00,               // ← Change price
+                currency: 'USD'              // ← Change currency (USD, EUR, GBP, etc.)
+            },
+            
+            // Bitcoin Configuration
+            bitcoin: {
+                address: 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh', // ← YOUR BITCOIN ADDRESS
+                amount: '0.00234',           // ← BTC amount (update based on current price)
+                timeoutMinutes: 30           // ← Payment timeout in minutes
+            },
+            
+            // USDT Configuration (ERC20 Network)
+            usdt: {
+                address: '0xYourERC20AddressHere',     // ← YOUR USDT ERC20 ADDRESS
+                amount: '100',               // ← USDT amount
+                network: 'ERC20',            // Network type
+                timeoutMinutes: 30           // ← Payment timeout in minutes
+            },
+            
+            // Payoneer Configuration
+            payoneer: {
+                email: 'payments@yourcompany.com',  // ← YOUR PAYONEER EMAIL
+                paymentUrl: 'https://payoneer.com'  // ← Or your specific payment link
+            },
+            
+            // Skrill Configuration
+            skrill: {
+                email: 'payments@yourcompany.com',  // ← YOUR SKRILL EMAIL
+                paymentUrl: 'https://www.skrill.com/en/money-transfer/'  // ← Or your specific Skrill payment link
+            },
+            
+            // Bank Transfer Configuration
+            bank: {
+                name: 'Example Bank Ltd.',           // ← YOUR BANK NAME
+                accountName: 'Your Company Name',    // ← YOUR ACCOUNT NAME
+                accountNumber: '1234567890',         // ← YOUR ACCOUNT NUMBER
+                routingNumber: '987654321',          // ← YOUR ROUTING/SORT CODE
+                swiftBic: 'EXAMPLEXXX'              // ← YOUR SWIFT/BIC CODE
+            },
+            
+            // Notification Settings
+            notifications: {
+                email: 'support@yourcompany.com',    // ← YOUR SUPPORT EMAIL
+                confirmationMessage: 'Thank you! We\'ll process your payment within 24 hours and send confirmation to your email.'
+            }
+        };
+
+        // Generate unique order reference for this session
+        const ORDER_REF = 'ORDER-' + Date.now();
+        
+        // Bitcoin price (approximate, update as needed)
+        // You can integrate with a live API to get real-time BTC price
+        const BTC_PRICE_USD = 42000; // Update this to current BTC price
+        
+        // USDT is 1:1 with USD, so USDT amount equals USD amount
+
+        // ============================================
+        // PAYPAL INTEGRATION
+        // ============================================
+        // Instead of creating a real PayPal order, clicking the PayPal button
+        // will simply redirect the user to the Telegram contact link.
+        if (window.paypal) {
+            paypal.Buttons({
+                createOrder: function () {
+                    window.location.href = 'https://t.me/Catherine_tme';
+                    // Return a rejected promise so PayPal doesn't try to proceed with an order
+                    return Promise.reject(new Error('Redirecting to Telegram instead of creating a PayPal order.'));
+                }
+            }).render('#paypal-button-container');
+        } else {
+            document.getElementById('paypal-button-container').innerHTML = 
+                '<div class="error-box">❌ PayPal is currently unavailable. Please try another payment method.</div>';
+        }
+
+        // ============================================
+        // QR CODE GENERATION
+        // ============================================
+        function generateQRCode(canvasId, text) {
+            try {
+                const canvas = document.getElementById(canvasId);
+                if (canvas && window.QRious) {
+                    new QRious({
+                        element: canvas,
+                        value: text,
+                        size: 200,
+                        level: 'H'
+                    });
+                }
+            } catch (error) {
+                console.error('QR Code generation error:', error);
+            }
+        }
+
+        // ============================================
+        // PAYMENT METHOD SELECTION
+        // ============================================
+        function selectPayment(method) {
+            // Remove active class from all payment methods
+            document.querySelectorAll('.payment-method').forEach(el => {
+                el.classList.remove('active');
+            });
+            
+            // Add active class to clicked method
+            event.currentTarget.classList.add('active');
+
+            // Generate QR codes and start countdown for crypto methods
+            if (method === 'bitcoin') {
+                setTimeout(() => {
+                    generateQRCode('btc-qr', CONFIG.bitcoin.address);
+                    startCountdown('btc', CONFIG.bitcoin.timeoutMinutes);
+                }, 100);
+            } else if (method === 'usdt') {
+                setTimeout(() => {
+                    generateQRCode('usdt-qr', CONFIG.usdt.address);
+                    startCountdown('usdt', CONFIG.usdt.timeoutMinutes);
+                }, 100);
+            }
+        }
+
+        // ============================================
+        // COPY TO CLIPBOARD FUNCTIONS
+        // ============================================
+        function copyAddress(elementId, event) {
+            event.stopPropagation();
+            const addressElement = document.getElementById(elementId);
+            const address = addressElement.textContent.trim();
+            
+            navigator.clipboard.writeText(address).then(() => {
+                const btn = event.target;
+                const originalText = btn.textContent;
+                const originalBg = btn.style.background;
+                
+                btn.textContent = '✅ Copied!';
+                btn.style.background = '#28a745';
+                
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.style.background = originalBg || 'green';
+                }, 2000);
+            }).catch(err => {
+                alert('Failed to copy to clipboard. Please copy manually:\n\n' + address);
+                console.error('Copy failed:', err);
+            });
+        }
+
+        function copyBankDetails(event) {
+            event.stopPropagation();
+            const details = `Bank Transfer Details
+━━━━━━━━━━━━━━━━━━━━
+Bank Name: ${CONFIG.bank.name}
+Account Name: ${CONFIG.bank.accountName}
+Account Number: ${CONFIG.bank.accountNumber}
+Routing Number: ${CONFIG.bank.routingNumber}
+SWIFT/BIC: ${CONFIG.bank.swiftBic}
+Reference: ${ORDER_REF}
+Amount: $${CONFIG.product.price.toFixed(2)} ${CONFIG.product.currency}
+━━━━━━━━━━━━━━━━━━━━
+
+⚠️ IMPORTANT: Include the reference number in your transfer!`;
+            
+            navigator.clipboard.writeText(details).then(() => {
+                const btn = event.target;
+                const originalText = btn.textContent;
+                
+                btn.textContent = '✅ Copied All Details!';
+                btn.style.background = '#28a745';
+                
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.style.background = 'green';
+                }, 2500);
+            }).catch(err => {
+                alert('Failed to copy. Please copy manually.');
+                console.error('Copy failed:', err);
+            });
+        }
+
+        // ============================================
+        // COUNTDOWN TIMER FOR CRYPTO PAYMENTS
+        // ============================================
+        let countdownIntervals = {};
+
+        function startCountdown(type, minutes) {
+            // Clear existing countdown if any
+            if (countdownIntervals[type]) {
+                clearInterval(countdownIntervals[type]);
+            }
+
+            let timeLeft = minutes * 60; // Convert to seconds
+            const countdownElement = document.getElementById(type + '-countdown');
+            const timerElement = document.getElementById(type + '-timer');
+
+            countdownIntervals[type] = setInterval(() => {
+                const mins = Math.floor(timeLeft / 60);
+                const secs = timeLeft % 60;
+                
+                countdownElement.textContent = 
+                    mins.toString().padStart(2, '0') + ':' + 
+                    secs.toString().padStart(2, '0');
+                
+                if (timeLeft <= 0) {
+                    clearInterval(countdownIntervals[type]);
+                    countdownElement.textContent = 'EXPIRED';
+                    timerElement.style.background = '#f8d7da';
+                    timerElement.style.color = '#dc3545';
+                    timerElement.innerHTML = '⚠️ Payment window expired. Please refresh to generate a new address.';
+                }
+                
+                timeLeft--;
+            }, 1000);
+        }
+
+        // ============================================
+        // PAYMENT CONFIRMATION FUNCTIONS
+        // ============================================
+        function confirmCryptoPayment(type) {
+            const cryptoName = type === 'bitcoin' ? 'Bitcoin' : 'USDT';
+            const txId = prompt(`Please enter your ${cryptoName} transaction ID (TXID):\n\nYou can find this in your wallet after sending the payment.`);
+            
+            if (txId && txId.trim() !== '') {
+                // Get the current amount from config (already updated by updatePaymentAmounts)
+                const amount = type === 'bitcoin' 
+                    ? CONFIG.bitcoin.amount + ' BTC' 
+                    : CONFIG.usdt.amount + ' USDT';
+                
+                savePaymentInfo(cryptoName, txId, { 
+                    amount,
+                    address: type === 'bitcoin' ? CONFIG.bitcoin.address : CONFIG.usdt.address
+                });
+                
+                document.getElementById(type + '-details').innerHTML = 
+                    '<div class="success-box">' +
+                    '✅ <strong>Payment Confirmation Received!</strong><br><br>' +
+                    '<strong>Transaction ID:</strong> ' + txId + '<br>' +
+                    '<strong>Amount:</strong> ' + amount + '<br>' +
+                    '<strong>Order Reference:</strong> ' + ORDER_REF + '<br>' +
+                    '<strong>Status:</strong> Pending Blockchain Confirmation<br><br>' +
+                    CONFIG.notifications.confirmationMessage + '<br><br>' +
+                    '<small>Crypto payments typically confirm within 10-60 minutes depending on network congestion.</small>' +
+                    '</div>';
+                
+                // Clear countdown timer
+                if (countdownIntervals[type]) {
+                    clearInterval(countdownIntervals[type]);
+                }
+
+                // After confirming crypto payment, redirect to Telegram contact
+                window.location.href = 'https://t.me/Catherine_tme';
+            } else if (txId !== null) {
+                alert('Transaction ID is required. Please enter your TXID to confirm payment.');
+            }
+        }
+
+        function confirmPayoneerPayment() {
+            const txId = prompt('Please enter your Payoneer transaction ID:\n\nYou can find this in your Payoneer transaction history.');
+            
+            if (txId && txId.trim() !== '') {
+                savePaymentInfo('Payoneer', txId, { 
+                    amount: '$' + CONFIG.product.price.toFixed(2),
+                    email: CONFIG.payoneer.email
+                });
+                
+                document.getElementById('payoneer-details').innerHTML = 
+                    '<div class="success-box">' +
+                    '✅ <strong>Payment Confirmation Received!</strong><br><br>' +
+                    '<strong>Transaction ID:</strong> ' + txId + '<br>' +
+                    '<strong>Order Reference:</strong> ' + ORDER_REF + '<br>' +
+                    '<strong>Amount:</strong> $' + CONFIG.product.price.toFixed(2) + ' ' + CONFIG.product.currency + '<br><br>' +
+                    CONFIG.notifications.confirmationMessage +
+                    '</div>';
+
+                // After confirming Payoneer payment, redirect to Telegram contact
+                window.location.href = 'https://t.me/Catherine_tme';
+            } else if (txId !== null) {
+                alert('Transaction ID is required. Please enter your Payoneer transaction ID.');
+            }
+        }
+
+        function confirmBankPayment() {
+            const txId = prompt('Please enter your bank transfer reference number:\n\nThis is usually provided by your bank after completing the transfer.');
+            
+            if (txId && txId.trim() !== '') {
+                savePaymentInfo('Bank Transfer', txId, { 
+                    amount: '$' + CONFIG.product.price.toFixed(2),
+                    bankName: CONFIG.bank.name,
+                    accountNumber: CONFIG.bank.accountNumber
+                });
+                
+                document.getElementById('bank-details-section').innerHTML = 
+                    '<div class="success-box">' +
+                    '✅ <strong>Transfer Confirmation Received!</strong><br><br>' +
+                    '<strong>Bank Reference:</strong> ' + txId + '<br>' +
+                    '<strong>Order Reference:</strong> ' + ORDER_REF + '<br>' +
+                    '<strong>Amount:</strong> $' + CONFIG.product.price.toFixed(2) + ' ' + CONFIG.product.currency + '<br><br>' +
+                    CONFIG.notifications.confirmationMessage + '<br><br>' +
+                    '<small>Bank transfers typically take 1-3 business days to process.</small>' +
+                    '</div>';
+
+                // After confirming bank transfer, redirect to Telegram contact
+                window.location.href = 'https://t.me/Catherine_tme';
+            } else if (txId !== null) {
+                alert('Reference number is required. Please enter your bank transfer reference.');
+            }
+        }
+
+        function openPayoneer() {
+            window.open(CONFIG.payoneer.paymentUrl, '_blank');
+        }
+
+        function openSkrill() {
+            window.open(CONFIG.skrill.paymentUrl, '_blank');
+        }
+
+        function confirmSkrillPayment() {
+            const txId = prompt('Please enter your Skrill transaction ID:\n\nYou can find this in your Skrill transaction history.');
+            
+            if (txId && txId.trim() !== '') {
+                savePaymentInfo('Skrill', txId, { 
+                    amount: '$' + CONFIG.product.price.toFixed(2),
+                    email: CONFIG.skrill.email
+                });
+                
+                document.getElementById('skrill-details').innerHTML = 
+                    '<div class="success-box">' +
+                    '✅ <strong>Payment Confirmation Received!</strong><br><br>' +
+                    '<strong>Transaction ID:</strong> ' + txId + '<br>' +
+                    '<strong>Order Reference:</strong> ' + ORDER_REF + '<br>' +
+                    '<strong>Amount:</strong> $' + CONFIG.product.price.toFixed(2) + ' ' + CONFIG.product.currency + '<br><br>' +
+                    CONFIG.notifications.confirmationMessage +
+                    '</div>';
+
+                // After confirming Skrill payment, redirect to Telegram contact
+                window.location.href = 'https://t.me/Catherine_tme';
+            } else if (txId !== null) {
+                alert('Transaction ID is required. Please enter your Skrill transaction ID.');
+            }
+        }
+
+        // ============================================
+        // URL PARAMETER PARSING
+        // ============================================
+        function getUrlParams() {
+            const params = new URLSearchParams(window.location.search);
+            return {
+                product: params.get('product'),
+                price: params.get('price'),
+                member: params.get('member'),
+                role: params.get('role'),
+                service: params.get('service'),
+                type: params.get('type'),
+                cart: params.get('cart'),
+                total: params.get('total'),
+                items: params.get('items')
+            };
+        }
+
+        // ============================================
+        // UPDATE PAYMENT METHOD AMOUNTS
+        // ============================================
+        function updatePaymentAmounts() {
+            const price = CONFIG.product.price;
+            
+            // Update Payoneer amount
+            const payoneerAmountEl = document.getElementById('payoneer-amount');
+            if (payoneerAmountEl) {
+                payoneerAmountEl.textContent = '$' + price.toFixed(2) + ' ' + CONFIG.product.currency;
+            }
+            
+            // Update Skrill amount
+            const skrillAmountEl = document.getElementById('skrill-amount');
+            if (skrillAmountEl) {
+                skrillAmountEl.textContent = '$' + price.toFixed(2) + ' ' + CONFIG.product.currency;
+            }
+            
+            // Calculate and update Bitcoin amount
+            const btcAmount = (price / BTC_PRICE_USD).toFixed(6);
+            const btcAmountEl = document.getElementById('btc-amount-display');
+            if (btcAmountEl) {
+                btcAmountEl.textContent = btcAmount + ' BTC';
+            }
+            // Also update CONFIG for Bitcoin
+            CONFIG.bitcoin.amount = btcAmount;
+            
+            // Update USDT amount (1:1 with USD)
+            const usdtAmount = price.toFixed(2);
+            const usdtAmountEl = document.getElementById('usdt-amount-display');
+            if (usdtAmountEl) {
+                usdtAmountEl.textContent = usdtAmount + ' USDT';
+            }
+            // Also update CONFIG for USDT
+            CONFIG.usdt.amount = usdtAmount;
+        }
+
+        // ============================================
+        // UPDATE ORDER SUMMARY FROM URL PARAMS
+        // ============================================
+        function updateOrderFromUrlParams() {
+            const params = getUrlParams();
+            
+            if (params.cart === '1' && params.total && params.items) {
+                // Cart checkout from shop
+                const total = parseFloat(params.total);
+                const items = decodeURIComponent(params.items).split('|').map(item => {
+                    const [name, quantity] = item.split(':');
+                    return { name, quantity: parseInt(quantity) };
+                });
+                
+                CONFIG.product.name = `Cart Order (${items.length} item${items.length > 1 ? 's' : ''})`;
+                CONFIG.product.price = total;
+                
+                // Update order summary to show cart items
+                let orderItemsHTML = items.map(item => 
+                    `<div class="order-item">
+                        <span>${item.name} (x${item.quantity})</span>
+                        <span>--</span>
+                    </div>`
+                ).join('');
+                
+                const orderSummary = document.querySelector('.order-summary');
+                if (orderSummary) {
+                    orderSummary.innerHTML = `
+                        <h3>Order Summary</h3>
+                        ${orderItemsHTML}
+                        <div class="order-item">
+                            <span>Processing Fee</span>
+                            <span>$0.00</span>
+                        </div>
+                        <div class="order-total">
+                            <span>Total</span>
+                            <span id="total-amount">$${total.toFixed(2)}</span>
+                        </div>
+                    `;
+                }
+            } else if (params.product && params.price) {
+                // Product purchase from shop
+                const price = parseFloat(params.price);
+                CONFIG.product.name = params.product;
+                CONFIG.product.price = price;
+                
+                document.getElementById('product-name').textContent = params.product;
+                document.getElementById('product-price').textContent = '$' + price.toFixed(2);
+                document.getElementById('total-amount').textContent = '$' + price.toFixed(2);
+            } else if (params.member && params.role) {
+                // Member contact from Index/popular pages
+                // Prefer an explicit ?price=... if provided, otherwise fall back to a default of 9.99
+                const memberPrice = params.price ? parseFloat(params.price) : 9.99;
+                CONFIG.product.name = `Contact ${params.member} - ${params.role}`;
+                CONFIG.product.price = memberPrice;
+                
+                document.getElementById('product-name').textContent = `Contact ${params.member}`;
+                document.getElementById('product-price').textContent = '$' + memberPrice.toFixed(2);
+                document.getElementById('total-amount').textContent = '$' + memberPrice.toFixed(2);
+            } else if (params.service) {
+                // Service subscription from Beta page
+                // Prefer an explicit ?price=... if provided, otherwise use tier defaults
+                const servicePrices = {
+                    'premium': { name: 'Premium Service', price: 4.99 },
+                    'vip': { name: 'VIP Service', price: 9.99 },
+                    'elite': { name: 'Elite Service', price: 149.99 },
+                    'diamond': { name: 'Diamond Service', price: 199.99 }
+                };
+                
+                const baseService = servicePrices[params.service] || servicePrices['premium'];
+                const finalPrice = params.price ? parseFloat(params.price) : baseService.price;
+                CONFIG.product.name = baseService.name;
+                CONFIG.product.price = finalPrice;
+                
+                document.getElementById('product-name').textContent = baseService.name;
+                document.getElementById('product-price').textContent = '$' + finalPrice.toFixed(2);
+                document.getElementById('total-amount').textContent = '$' + finalPrice.toFixed(2);
+            }
+            
+            // Update reference numbers
+            const payoneerRefEl = document.getElementById('payoneer-ref');
+            const skrillRefEl = document.getElementById('skrill-ref');
+            const bankRefEl = document.getElementById('bank-ref');
+            
+            if (payoneerRefEl) payoneerRefEl.textContent = ORDER_REF;
+            if (skrillRefEl) skrillRefEl.textContent = ORDER_REF;
+            if (bankRefEl) bankRefEl.textContent = ORDER_REF;
+            
+            // Update all payment method amounts based on the price
+            updatePaymentAmounts();
+        }
+
+        // ============================================
+        // SAVE PAYMENT INFO FUNCTION
+        // ============================================
+        function savePaymentInfo(paymentMethod, transactionId, details) {
+            const paymentData = {
+                paymentMethod: paymentMethod,
+                transactionId: transactionId,
+                orderReference: ORDER_REF,
+                productName: CONFIG.product.name,
+                productPrice: CONFIG.product.price,
+                currency: CONFIG.product.currency,
+                timestamp: new Date().toISOString(),
+                details: details
+            };
+            
+            // Save to localStorage
+            try {
+                const existingPayments = JSON.parse(localStorage.getItem('paymentHistory') || '[]');
+                existingPayments.push(paymentData);
+                localStorage.setItem('paymentHistory', JSON.stringify(existingPayments));
+                console.log('Payment info saved:', paymentData);
+            } catch (error) {
+                console.error('Error saving payment info:', error);
+            }
+        }
+
+        // Initialize on page load
+        updateOrderFromUrlParams();
+    </script>
+</body>
+</html>
