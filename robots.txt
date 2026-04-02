@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /pay.html
+
+Sitemap: https://pampowers.com/sitemap.xml
