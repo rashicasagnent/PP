@@ -6,12 +6,12 @@
     <title>PamPowers Popular - Most Loved</title>
     <meta name="description" content="Discover the most loved PamPowers profiles. Explore our most popular romantic connections and start your journey today.">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://pampowers.com/popular.html">
+    <link rel="canonical" href="https://pampowers.shop/popular.html">
     <meta property="og:type" content="website">
     <meta property="og:title" content="PamPowers Popular - Most Loved">
     <meta property="og:description" content="Discover the most loved PamPowers profiles. Explore our most popular romantic connections and start your journey today.">
-    <meta property="og:image" content="https://pampowers.com/picos/2.webp">
-    <meta property="og:url" content="https://pampowers.com/popular.html">
+    <meta property="og:image" content="https://pampowers.shop/picos/2.webp">
+    <meta property="og:url" content="https://pampowers.shop/popular.html">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,7 +29,7 @@
 
         body {
             min-height: 100vh;
-            background: linear-gradient(135deg, #03081d 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #03081d 0%, #6d28d9 100%);
             color: #2c3e50;
         }
 
@@ -67,7 +67,7 @@
             transition: color 0.2s ease;
         }
         .logo:hover {
-            color: #fecfef;
+            color: #e9d5ff;
         }
 
         .nav-links {
@@ -106,17 +106,17 @@
         .nav-buttons a:hover {
             color: #fff;
             background: rgba(255, 255, 255, 0.06);
-            border-left-color: #fecfef;
+            border-left-color: #e9d5ff;
         }
 
         #A1 a {
-            color: #fecfef;
-            border-left-color: #ff6b6b;
+            color: #e9d5ff;
+            border-left-color: #7c3aed;
         }
         #A1 a:hover {
             color: #fff;
             background: rgba(254, 207, 239, 0.12);
-            border-left-color: #ff6b6b;
+            border-left-color: #7c3aed;
         }
 
         .nav-footer {
@@ -150,7 +150,7 @@
         .white {
             width: 85%;
             height: 100vh;
-            background: linear-gradient(135deg, #010514 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #010514 0%, #6d28d9 100%);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -186,7 +186,7 @@
             font-size: 3rem;
             font-weight: 800;
             text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-            background: linear-gradient(45deg, #ff9a9e, #fecfef, #ff6b6b);
+            background: linear-gradient(45deg, #a78bfa, #e9d5ff, #7c3aed);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -246,7 +246,7 @@
         }
 
         .profile-card:hover .profile-image {
-            border-color: #ff9a9e;
+            border-color: #a78bfa;
             transform: scale(1.02);
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
         }
@@ -271,7 +271,7 @@
         }
 
         .contact-icon {
-            color: #ff9a9e;
+            color: #a78bfa;
             font-size: 1.1rem;
         }
 
@@ -286,12 +286,12 @@
 
         .phone-number:hover {
             background: rgba(255, 255, 255, 0.2);
-            border-color: #ff9a9e;
+            border-color: #a78bfa;
             cursor: pointer;
         }
 
         .profile-status {
-            background: linear-gradient(45deg, #ff9a9e, #fecfef);
+            background: linear-gradient(45deg, #a78bfa, #e9d5ff);
             color: #fff;
             padding: 5px 15px;
             border-radius: 20px;
@@ -351,7 +351,7 @@
         }
 
         .payment-content {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #6d28d9 0%, #6d28d9 100%);
             padding: 40px;
             border-radius: 20px;
             text-align: center;
@@ -396,7 +396,7 @@
         }
 
         .payment-amount .price {
-            color: #ff9a9e;
+            color: #a78bfa;
             font-size: 2.5rem;
             font-weight: 700;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
@@ -421,7 +421,7 @@
         }
 
         .payment-btn.pay {
-            background: linear-gradient(45deg, #ff9a9e, #fecfef);
+            background: linear-gradient(45deg, #a78bfa, #e9d5ff);
             color: #fff;
         }
 
@@ -578,6 +578,57 @@
                 align-items: center;
             }
         }
+
+        /* ---- Site-wide theme unification (matches index.html) ---- */
+        :root {
+            --paper: #faf7fd;
+            --paper-alt: #f3edfa;
+            --ink: #2a1a3e;
+            --muted: #6f6280;
+            --line: #e8def7;
+            --accent: #7c3aed;
+            --accent-light: #a78bfa;
+            --accent-pale: #c084fc;
+        }
+        body { background: linear-gradient(160deg, var(--paper) 0%, var(--paper-alt) 100%) !important; color: var(--ink) !important; }
+        .navbar {
+            background: rgba(255,255,255,0.9) !important;
+            border-right: 1px solid var(--line) !important;
+            box-shadow: 4px 0 24px rgba(124,58,237,0.08) !important;
+        }
+        .logo { color: var(--ink) !important; }
+        .logo:hover { color: var(--accent) !important; }
+        .nav-buttons a { color: var(--muted) !important; }
+        .nav-buttons a:hover { color: var(--ink) !important; background: rgba(124,58,237,0.08) !important; border-left-color: var(--accent-light) !important; }
+        #A1 a, #A2 a, #A3 a, #A4 a, #A5 a { color: var(--accent) !important; border-left-color: var(--accent-light) !important; }
+        #A1 a:hover, #A2 a:hover, #A3 a:hover, #A4 a:hover, #A5 a:hover { color: var(--ink) !important; background: rgba(124,58,237,0.1) !important; }
+        .nav-footer { border-top: 1px solid var(--line) !important; }
+        .nav-button a { color: var(--muted) !important; }
+        .nav-button a:hover { color: var(--ink) !important; }
+        .white { background: var(--paper-alt) !important; }
+        .white::before { opacity: 0.04 !important; }
+        .h51 {
+            color: var(--ink) !important;
+            text-shadow: none !important;
+            background: linear-gradient(45deg, var(--accent), var(--accent-light), var(--accent-pale)) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            background-clip: text !important;
+        }
+        .h52 { color: var(--muted) !important; text-shadow: none !important; }
+        .profile-card {
+            background: #fff !important;
+            border: 1px solid var(--line) !important;
+            backdrop-filter: none !important;
+        }
+        .profile-card:hover { background: #fff !important; box-shadow: 0 20px 40px rgba(124,58,237,0.12) !important; }
+        .profile-image { background-color: var(--paper-alt) !important; border-color: var(--line) !important; }
+        .profile-card:hover .profile-image { border-color: var(--accent-light) !important; }
+        .profile-name { color: var(--ink) !important; text-shadow: none !important; }
+        .profile-contact { color: var(--muted) !important; }
+        .phone-number { background: var(--paper-alt) !important; border: 1px solid var(--line) !important; color: var(--ink) !important; }
+        .phone-number:hover { background: #ece0fb !important; border-color: var(--accent-light) !important; }
+        .contact-icon { color: var(--accent) !important; }
     </style>
 </head>
 <body>
