@@ -230,10 +230,8 @@ body.open .lightbox {
   transition: opacity $speed ease-in-out, width 0ms ease-in-out;
 }
 
- body{
-            background: #000 !important;
-            margin-top: 100px !important;
-        }
+ /* body background/margin now controlled by Shop.html's own theme; this used to force
+    a black page background with !important, overriding everything else on the page. */
         .testimonial{
             margin: 0 20px 40px;
         }
